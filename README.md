@@ -1,8 +1,4 @@
-Learning Python!
-
-get submodule code:
-
-    git submodule update --init --recursive
+# Learning Python!
 
 run tests with:
 

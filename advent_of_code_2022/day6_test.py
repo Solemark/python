@@ -1,5 +1,5 @@
 import unittest
-from day6 import Day6
+from day6 import day6
 
 
 class advent_of_code_2022_tests(unittest.TestCase):
@@ -12,5 +12,4 @@ class advent_of_code_2022_tests(unittest.TestCase):
             "zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw",
         ]
         expect: list[int] = [7, 5, 6, 10, 11]
-        for i in range(data.__len__()):
-            self.assertEqual(expect[i], Day6().run(data[i]), data[i])
+        self.assertEqual(expect, day6(data))

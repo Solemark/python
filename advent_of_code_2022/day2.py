@@ -28,8 +28,7 @@ results: dict = {
 
 
 def day2(data: list[list[str]], i: int = 0, total: int = 0) -> int:
-    total += points[rps[data[i][1]]]
-    total += results[f"{rps[data[i][0]]}-{rps[data[i][1]]}"]
+    new = points[rps[data[i][1]]] + results[f"{rps[data[i][0]]}-{rps[data[i][1]]}"]
     if len(data) - 1 <= i:
-        return total
-    return day2(data, i + 1, total)
+        return total + new
+    return day2(data, i + 1, total + new)

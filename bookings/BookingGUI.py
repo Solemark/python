@@ -2,7 +2,7 @@ from tkinter import Tk, Label, Entry, StringVar, Button, Checkbutton, BooleanVar
 from Booking import Luxury
 
 
-class BookingGui:
+class BookingGUI:
     __booking_id: StringVar
     __booking_date: StringVar
     __num_weeks: StringVar
@@ -163,3 +163,7 @@ class BookingGui:
         self.__rooms_cost.set(str(room_cost))
         self.__garden_area_cost.set(str(garden_area_cost))
         self.__total_price.set(str(total + booking.get_luxury_cost()))
+
+
+if __name__ == "__main__":
+    BookingGUI()

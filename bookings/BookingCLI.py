@@ -38,28 +38,17 @@ class BookingCLI:
 
     def __new(self) -> Luxury:
         """Creates a new Luxury object"""
-        ID: str = input("Enter Booking ID: ")
-        DATE: str = input("Enter Booking Date: ")
-        WEEKS: str = input("Enter Number of Weeks: ")
-        OWNER: str = input("Enter Property Owner Name: ")
-        PHONE: str = input("Enter Contact Number: ")
-        ADDR: str = input("Enter Booking Address: ")
-        ROOMS: str = input("Enter Number of Rooms: ")
-        AREA: str = input("Enter Garden Area: ")
-        ALARM: str = input("Perform Security Alarm Check? (Y/N): ")
-        POOL: str = input("Perform Pool Maintenance (Y/N): ")
-
         return Luxury(
-            ID,
-            DATE,
-            int(WEEKS),
-            OWNER,
-            PHONE,
-            ADDR,
-            int(ROOMS),
-            int(AREA),
-            True if ALARM.upper() == "Y" else False,
-            True if POOL.upper() == "Y" else False,
+            input("Enter Booking ID: "),
+            input("Enter Booking Date: "),
+            int(input("Enter Number of Weeks: ")),
+            input("Enter Property Owner Name: "),
+            input("Enter Contact Number: "),
+            input("Enter Booking Address: "),
+            int(input("Enter Number of Rooms: ")),
+            int(input("Enter Garden Area: ")),
+            True if input("Perform Alarm Check? (Y/N): ").upper() == "Y" else False,
+            True if input("Perform Pool Upkeep? (Y/N): ").upper() == "Y" else False,
         )
 
     def __search(self) -> Luxury | str:

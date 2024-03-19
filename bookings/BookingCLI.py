@@ -1,4 +1,13 @@
+from enum import Enum
 from Booking import Luxury
+
+
+class Type(Enum):
+    """Enum for __validate() TYPE"""
+
+    STRING = 1
+    INT = 2
+    BOOL = 3
 
 
 class BookingCLI:
@@ -39,17 +48,39 @@ class BookingCLI:
     def __new(self) -> Luxury:
         """Creates a new Luxury object"""
         return Luxury(
-            input("Enter Booking ID: "),
-            input("Enter Booking Date: "),
-            int(input("Enter Number of Weeks: ")),
-            input("Enter Property Owner Name: "),
-            input("Enter Contact Number: "),
-            input("Enter Booking Address: "),
-            int(input("Enter Number of Rooms: ")),
-            int(input("Enter Garden Area: ")),
-            True if input("Perform Alarm Check? (Y/N): ").upper() == "Y" else False,
-            True if input("Perform Pool Upkeep? (Y/N): ").upper() == "Y" else False,
+            self.__validate("Enter Booking ID: "),
+            self.__validate("Enter Booking Date: "),
+            self.__validate("Enter Number of Weeks: ", Type.INT),
+            self.__validate("Enter Property Owner Name: "),
+            self.__validate("Enter Contact Number: "),
+            self.__validate("Enter Booking Address: "),
+            self.__validate("Enter Number of Rooms: ", Type.INT),
+            self.__validate("Enter Garden Area: ", Type.INT),
+            self.__validate("Perform Alarm Check? (Y/N): ", Type.BOOL),
+            self.__validate("Perform Pool Upkeep? (Y/N): ", Type.BOOL),
         )
+
+    def __validate(self, MSG: str, TYPE: Type = Type.STRING) -> str | int | bool:
+        """Validate user input for new Luxury Objects"""
+        out: str | int | bool
+        flag: bool = False
+        while flag is False:
+            out = input(MSG)
+            match TYPE:
+                case TYPE.STRING:
+                    if out is not None and out != "":
+                        flag = True
+                case TYPE.INT:
+                    if out is not None and out != "":
+                        try:
+                            out = int(out)
+                            flag = True
+                        except ValueError:
+                            continue
+                case TYPE.BOOL:
+                    if out is not None and out.upper() in ["Y", "N"]:
+                        out = True if out.upper() == "Y" else False
+        return out
 
     def __search(self) -> Luxury | str:
         """Finds the Luxury object from the bookings list"""

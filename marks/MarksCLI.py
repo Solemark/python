@@ -1,13 +1,4 @@
-from enum import Enum
 from Mark import Mark
-
-
-class Op(Enum):
-    """Enum for __init__() case"""
-
-    NEW = 1
-    SEARCH = 2
-    LIST = 3
 
 
 class MarksCLI:
@@ -27,11 +18,11 @@ class MarksCLI:
         while True:
             CMD: int = int(input(f"{self.__linebreak()}\n{', '.join(self.__INSTR)}"))
             match CMD:
-                case Op.NEW:
+                case 1:
                     self.__students = [*self.__students, self.__new()]
-                case Op.SEARCH:
+                case 2:
                     print(self.__search())
-                case Op.LIST:
+                case 3:
                     print(self.__students)
                 case _:
                     exit(0)

@@ -22,14 +22,18 @@ create a venv:
 
 open venv with:
 
-        . .venv/bin/activate
+	. .venv/bin/activate
+
+get dependencies with:
+
+    pip3 install -r requirements.txt
 
 run server with:
 
-        flask --app <filename> run
+	flask --app <filename> run
 
 run debug mode with:
 
-        flask --app <filename> run --debug
+	flask --app <filename> run --debug
 
 filename does not need to include .py

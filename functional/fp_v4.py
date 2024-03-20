@@ -19,4 +19,5 @@ def main() -> None:
     print(display(O_LIST, test_list))
 
 
-main()
+if __name__ == "__main__":
+    main()

@@ -23,3 +23,7 @@ class Task4:
             total += grade
         avgGrade = total / count
         print(f"The average student grade is: {str(round(avgGrade, 2))}")
+
+
+if __name__ == "__main__":
+    Task4()

@@ -44,3 +44,7 @@ class Task5:
         self.avgText.set(
             f"The average grade for students is: {str(round(self.__totalGrade/self.__sNumber, 2))}"
         )
+
+
+if __name__ == "__main__":
+    Task5()

@@ -11,3 +11,7 @@ class Task3:
             print("Student has recieved a Distinction(D)")
         else:
             print("Student has recieved a High Distinction(HD)")
+
+
+if __name__ == "__main__":
+    Task3()

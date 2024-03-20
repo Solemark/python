@@ -2,7 +2,7 @@ from tkinter import Tk, StringVar, IntVar, Label, Entry, Button
 from Mark import Mark
 
 
-class MarksGui:
+class MarksGUI:
     __student_name: StringVar
     __student_mark: IntVar
     __output: StringVar
@@ -58,4 +58,5 @@ class MarksGui:
         self.__output.set("")
 
 
-MarksGui()
+if __name__ == "__main__":
+    MarksGUI()

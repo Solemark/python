@@ -26,17 +26,17 @@ class BookingCLI:
     def __init__(self) -> None:
         self.bookings = []
         while True:
-            CMD: str = input(f"{self.__linebreak()}\n{', '.join(self.INSTR)}\n")
+            CMD: int = int(input(f"{self.__linebreak()}\n{', '.join(self.INSTR)}\n"))
             match CMD:
-                case "1":
+                case 1:
                     self.bookings = [*self.bookings, self.__new()]
-                case "2":
+                case 2:
                     print(self.__search())
-                case "3":
+                case 3:
                     print(self.__list())
-                case "4":
+                case 4:
                     self.bookings = self.__update()
-                case "5":
+                case 5:
                     self.bookings = self.__remove()
                 case _:
                     exit(0)

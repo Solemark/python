@@ -67,19 +67,20 @@ class BookingCLI:
         while flag is False:
             out = input(MSG)
             match TYPE:
-                case TYPE.STRING:
+                case Type.STRING:
                     if out is not None and out != "":
                         flag = True
-                case TYPE.INT:
+                case Type.INT:
                     if out is not None and out != "":
                         try:
                             out = int(out)
                             flag = True
                         except ValueError:
                             continue
-                case TYPE.BOOL:
+                case Type.BOOL:
                     if out is not None and out.upper() in ["Y", "N"]:
                         out = True if out.upper() == "Y" else False
+                        flag = True
         return out
 
     def __search(self) -> Luxury | str:

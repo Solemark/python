@@ -15,10 +15,10 @@ def get_books() -> list[dict[str, str | float]]:
 
 
 @app.get("/books/<book>")
-def get_book(book: str) -> list[dict[str, str | float]]:
+def get_book(book: str) -> dict[str, str | float]:
     """Get a specific book from the server"""
     books: list[Book] = __get_book_list()
-    return [b.serialize() for b in books if b.get_name() == escape(book)]
+    return [b.serialize() for b in books if b.get_name() == escape(book)][0]
 
 
 @app.post("/books/save")

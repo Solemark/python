@@ -15,10 +15,10 @@ def get_movies() -> list[dict[str, str | float]]:
 
 
 @app.get("/movies/<movie>")
-def get_movie(movie: str) -> list[dict[str, str | float]]:
+def get_movie(movie: str) -> dict[str, str | float]:
     """Get a specific movie from the server"""
     movies: list[Movie] = __get_movie_list()
-    return [m.serialize() for m in movies if m.get_name() == escape(movie)]
+    return [m.serialize() for m in movies if m.get_name() == escape(movie)][0]
 
 
 @app.post("/movies/save")

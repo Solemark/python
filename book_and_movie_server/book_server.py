@@ -31,11 +31,11 @@ def save_book() -> Any:
 
 def __get_book_list() -> list[Book]:
     """Get the list of books from file"""
-    b = open("data/books.csv").readlines()
+    f = open("data/books.csv").readlines()
     books: list[Book] = []
-    for i in b:
-        j: list[str] = i.split(",")
-        books = [*books, Book(j[0], float(j[1]), float(j[2]))]
+    for d in f:
+        b: list[str] = d.split(",")
+        books = [*books, Book(b[0], float(b[1]), float(b[2]))]
     return books
 
 

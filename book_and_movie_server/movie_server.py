@@ -31,11 +31,11 @@ def save_movie() -> Any:
 
 def __get_movie_list() -> list[Movie]:
     """Get the list of movies from file"""
-    m = open("data/movies.csv").readlines()
+    f = open("data/movies.csv").readlines()
     movies: list[Movie] = []
-    for i in m:
-        j: list[str] = i.split(",")
-        movies = [*movies, Movie(j[0], float(j[1]), float(j[2]))]
+    for d in f:
+        m: list[str] = d.split(",")
+        movies = [*movies, Movie(m[0], float(m[1]), float(m[2]))]
     return movies
 
 

@@ -1,18 +1,14 @@
-from enum import Enum
+from enum import Enum, auto
 from Booking import Luxury
 
 
 class Type(Enum):
-    """Enum for __validate() TYPE"""
-
-    STRING = 1
-    INT = 2
-    BOOL = 3
+    INT = auto()
+    BOOL = auto()
+    STRING = auto()
 
 
 class BookingCLI:
-    """CLI frontend for the Bookings system"""
-
     INSTR: list[str] = [
         "1 to add new booking",
         "2 to search existing booking",
@@ -70,9 +66,6 @@ class BookingCLI:
         while flag is False:
             out = input(MSG)
             match T:
-                case Type.STRING:
-                    if out is not None and out != "":
-                        flag = True
                 case Type.INT:
                     if out is not None and out != "":
                         try:
@@ -83,6 +76,9 @@ class BookingCLI:
                 case Type.BOOL:
                     if out is not None and out.upper() in ["Y", "N"]:
                         out = True if out.upper() == "Y" else False
+                        flag = True
+                case Type.STRING:
+                    if out is not None and out != "":
                         flag = True
         return out
 

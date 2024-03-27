@@ -25,21 +25,24 @@ class BookingCLI:
 
     def __init__(self) -> None:
         self.bookings = []
-        while True:
-            CMD: int = int(input(f"{self.__linebreak()}\n{', '.join(self.INSTR)}\n"))
-            match CMD:
-                case 1:
-                    self.bookings = [*self.bookings, self.__new()]
-                case 2:
-                    print(self.__search())
-                case 3:
-                    print(self.__list())
-                case 4:
-                    self.bookings = self.__update()
-                case 5:
-                    self.bookings = self.__remove()
-                case _:
-                    exit(0)
+        self.__cli()
+
+    def __cli(self) -> None:
+        CMD: int = int(input(f"{self.__linebreak()}\n{', '.join(self.INSTR)}\n"))
+        match CMD:
+            case 1:
+                self.bookings = [*self.bookings, self.__new()]
+            case 2:
+                print(self.__search())
+            case 3:
+                print(self.__list())
+            case 4:
+                self.bookings = self.__update()
+            case 5:
+                self.bookings = self.__remove()
+            case _:
+                exit(0)
+        self.__cli()
 
     def __linebreak(self) -> str:
         """Function that creates a string linebreak"""
@@ -60,13 +63,13 @@ class BookingCLI:
             self.__validate("Perform Pool Upkeep? (Y/N): ", Type.BOOL),
         )
 
-    def __validate(self, MSG: str, TYPE: Type = Type.STRING) -> str | int | bool:
+    def __validate(self, MSG: str, T: Type = Type.STRING) -> str | int | bool:
         """Validate user input for new Luxury Objects"""
         out: str | int | bool
         flag: bool = False
         while flag is False:
             out = input(MSG)
-            match TYPE:
+            match T:
                 case Type.STRING:
                     if out is not None and out != "":
                         flag = True

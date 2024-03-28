@@ -2,8 +2,6 @@ from Mark import Mark
 
 
 class MarksCLI:
-    """CLI frontend for the Mark Entry System 3.0"""
-
     __students: list[Mark]
     __INSTR: list[str] = [
         "1 to add new student",
@@ -15,17 +13,21 @@ class MarksCLI:
     def __init__(self) -> None:
         self.__students = []
         print("Mark Entry System 3.0")
-        while True:
-            CMD: int = int(input(f"{self.__linebreak()}\n{', '.join(self.__INSTR)}"))
-            match CMD:
-                case 1:
-                    self.__students = [*self.__students, self.__new()]
-                case 2:
-                    print(self.__search())
-                case 3:
-                    print(self.__students)
-                case _:
-                    exit(0)
+        self.__cli()
+
+    def __cli(self) -> None:
+        """run the CLI component recursively"""
+        CMD: int = int(input(f"{self.__linebreak()}\n{', '.join(self.__INSTR)}"))
+        match CMD:
+            case 1:
+                self.__students = [*self.__students, self.__new()]
+            case 2:
+                print(self.__search())
+            case 3:
+                print(self.__students)
+            case _:
+                exit(0)
+        self.__cli()
 
     def __linebreak(self) -> str:
         """Function that creates a string linebreak"""

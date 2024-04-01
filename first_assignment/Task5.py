@@ -20,10 +20,10 @@ class Task5:
         grade.pack()
         self.__avg.set("The average grade for students is: 0")
         Label(window, textvariable=self.__avg).pack()
-        Button(window, text="Enter", command=self.__getGrade).pack()
+        Button(window, text="Enter", command=self.__get_grade).pack()
         window.mainloop()
 
-    def __getGrade(self) -> None:
+    def __get_grade(self) -> None:
         if int(self.__grade.get()) <= 49:
             messagebox.showinfo("Student Grade", "Student has failed (F)")
         elif int(self.__grade.get()) <= 64:

@@ -1,13 +1,4 @@
 class Booking:
-    __booking_id: str
-    __booking_date: str
-    __num_weeks: int
-    __property_owner_name: str
-    __contact_number: str
-    __address: str
-    __rooms: int
-    __garden_area: float
-
     def __init__(
         self,
         booking_id: str = "",
@@ -98,9 +89,6 @@ class Booking:
 
 
 class Luxury(Booking):
-    __security_alarm_check: bool = False
-    __pool_maintenance: bool = False
-
     def __init__(
         self,
         booking_id="",

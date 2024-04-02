@@ -1,23 +1,7 @@
 class BMI:
-    __id: str
-    """id of the user record"""
-    __height: float
-    """height in mm and needs to be converted to m"""
-    __weight: float
-    """weight in kg"""
-
-    def __init__(self, id: str, height: float, weight: float) -> None:
-        self.__id = id
+    def __init__(self, height: float, weight: float) -> None:
         self.__height = height
         self.__weight = weight
-
-    def set_id(self, id: str) -> None:
-        """set the id of the user"""
-        self.__id = id
-
-    def get_id(self) -> str:
-        """get the id of the user"""
-        return self.__id
 
     def set_height(self, height: float) -> None:
         """set the height of the user"""
@@ -54,3 +38,7 @@ class BMI:
         if bmi >= 35:
             rating = "Morbid"
         return rating
+
+    def get_map(self) -> dict[str, float]:
+        """get map of bmi"""
+        return {"height": self.__height, "weight": self.__weight}

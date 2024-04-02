@@ -10,7 +10,7 @@ def whisper(text: str) -> str:
 
 
 def greet(func: Callable) -> str:
-    return func("Hello world")
+    return func("Hello World")
 
 
 def add(x: int | float, y: int | float) -> int | float:
@@ -27,5 +27,6 @@ def calculate(function: Callable, x: int | float, y: int | float) -> int | float
 
 print(greet(shout))
 print(greet(whisper))
+
 print(calculate(add, 1, 1))
 print(calculate(subtract, 1, 1))

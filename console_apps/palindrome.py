@@ -1,21 +1,19 @@
-def __check_str(input: str, start: int, end: int) -> bool:
-    if start > end:
+def palindrome_fp(s: str, i: int = 0, j: int | None = None) -> bool:
+    if j is None:
+        j = len(s) - 1
+    if i >= j:
         return True
-    if __check_chars(input[start], input[end]) is False:
+    if __check_chars(s[i], s[j]) is False:
         return False
-    return __check_str(input, start + 1, end - 1)
+    return palindrome_fp(s, i + 1, j - 1)
 
 
 def __check_chars(x: str, y: str) -> bool:
-    return True if x == y else False
+    return x == y
 
 
-def palindrome_fp(input: str) -> bool:
-    return __check_str(input, 0, len(input) - 1)
-
-
-def palindrome(input: str) -> bool:
-    for start in range(len(input) - 1):
-        if input[start] != input[(len(input) - 1) - start]:
+def palindrome(s: str) -> bool:
+    for i in range(len(s) - 1):
+        if __check_chars(s[i], s[(len(s) - 1) - i]) is False:
             return False
     return True

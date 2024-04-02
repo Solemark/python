@@ -1,4 +1,4 @@
-def never_using_comprehensions():
+def never_using_comprehensions() -> None:
     dict_comp: dict[int, int] = {i: i * i for i in range(10)}
     list_comp: list[int] = [x * x for x in range(10)]
     set_comp: set[int] = {i % 3 for i in range(10)}
@@ -6,7 +6,7 @@ def never_using_comprehensions():
     print(dict_comp, list_comp, set_comp, gen_comp)
 
 
-def always_using_comprehensions(a, b, n):
+def always_using_comprehensions(a: list[int], b: list[int], n: int) -> list[int]:
     return [
         # What in the nine hells is this!?
         sum(a[n * i + k] * b[n * k + j] for k in range(n))

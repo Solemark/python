@@ -1,4 +1,7 @@
-from typing import Callable
+from typing import Callable, TypeAlias
+
+Greet: TypeAlias = Callable[[str], str]
+Calc: TypeAlias = Callable[[int | float, int | float], int | float]
 
 
 def shout(text: str) -> str:
@@ -9,7 +12,7 @@ def whisper(text: str) -> str:
     return text.lower()
 
 
-def greet(func: Callable) -> str:
+def greet(func: Greet) -> str:
     return func("Hello World")
 
 
@@ -21,7 +24,7 @@ def subtract(x: int | float, y: int | float) -> int | float:
     return x - y
 
 
-def calculate(function: Callable, x: int | float, y: int | float) -> int | float:
+def calculate(function: Calc, x: int | float, y: int | float) -> int | float:
     return function(x, y)
 
 

@@ -1,7 +1,9 @@
 class BMI:
     def __init__(self, height: float, weight: float) -> None:
         self.__height = height
+        """height of user"""
         self.__weight = weight
+        """Weight of user"""
 
     def set_height(self, height: float) -> None:
         """set the height of the user"""

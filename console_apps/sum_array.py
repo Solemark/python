@@ -2,8 +2,4 @@ from functools import reduce
 
 
 def sum(input: list[int | float]) -> int | float:
-    return reduce(__add, input)
-
-
-def __add(a: int | float, b: int | float) -> int | float:
-    return a + b
+    return reduce(lambda a, b: a + b, input)

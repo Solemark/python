@@ -1,10 +1,9 @@
 class Mark:
-    __student_name: str = ""
-    __student_mark: int = 0
-
     def __init__(self, student_name: str = "", student_mark: int = 0) -> None:
         self.__student_name = student_name
+        """@param str - student name"""
         self.__student_mark = student_mark
+        """@param int - student mark"""
 
     def set_student_name(self, student_name: str) -> None:
         self.__student_name = student_name
@@ -30,5 +29,5 @@ class Mark:
         else:
             return "HD"
 
-    def to_string(self) -> str:
+    def __str__(self) -> str:
         return f"{self.__student_name}, {self.__student_mark}, {self.get_grade()}"

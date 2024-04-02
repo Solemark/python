@@ -34,16 +34,16 @@ class MarksGUI:
         mark: Mark = Mark(self.__student_name.get(), self.__student_mark.get())
         self.__students.append(mark)
         self.__clear()
-        self.__output.set(f"Added Student {mark.to_string()}")
+        self.__output.set(f"Added Student {mark.__str__()}")
 
     def __display(self) -> None:
         self.__clear()
-        self.__output.set("\n".join(student.to_string() for student in self.__students))
+        self.__output.set("\n".join(student.__str__() for student in self.__students))
 
     def __search(self) -> None:
         self.__output.set(
             "".join(
-                student.to_string()
+                student.__str__()
                 for student in self.__students
                 if student.get_student_name() == self.__student_name.get()
             )

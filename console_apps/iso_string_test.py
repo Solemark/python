@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from isomorphic_string import is_isomorphic
+from iso_string import is_iso
 
 
 class TestIsoString(TestCase):
@@ -11,5 +11,5 @@ class TestIsoString(TestCase):
             ["paper", "title", True],
         ]
         for item in data:
-            result: bool = is_isomorphic(str(item[0]), str(item[1]))
+            result: bool = is_iso(str(item[0]), str(item[1]))
             self.assertEqual(item[2], result)

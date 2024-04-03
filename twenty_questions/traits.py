@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
 
-@dataclass
+@dataclass(init=True)
 class Traits:
     hair: str
     eyes: str

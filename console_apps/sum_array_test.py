@@ -2,7 +2,7 @@ from unittest import TestCase
 from sum_array import sum
 
 
-class test_sum_array(TestCase):
+class TestSumArray(TestCase):
     def test_sum_array(self) -> None:
         self.assertEqual(15, sum([1, 2, 3, 4, 5]))
 

@@ -2,7 +2,7 @@ from unittest import TestCase
 from multiplication_tables import calculate
 
 
-class test_multiplication_tables(TestCase):
+class TestMultiplicationTables(TestCase):
     def test_1_x_12(self) -> None:
         expect = calculate(1, 12)
         result = [

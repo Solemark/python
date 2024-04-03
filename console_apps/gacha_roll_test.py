@@ -2,7 +2,7 @@ from unittest import TestCase
 from gacha_roll import roll
 
 
-class test_gacha_roll(TestCase):
+class TestGachaRoll(TestCase):
     def test_gacha_roll_FGO(self) -> None:
         substr = "FGO"
         result = roll("FGO")

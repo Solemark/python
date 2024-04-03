@@ -2,7 +2,7 @@ from unittest import TestCase
 from recursive_sum import number, array
 
 
-class test_recursive_sum(TestCase):
+class TestRecursiveSum(TestCase):
     def test_sum_number(self) -> None:
         input: int = 10
         expect: int = 55

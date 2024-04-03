@@ -2,7 +2,7 @@ from unittest import TestCase
 from filters import negative, positive, odds, evens
 
 
-class test_filter_negative(TestCase):
+class TestFilterNegative(TestCase):
     def test_filter_negative(self) -> None:
         self.assertEqual(
             [0, 1, 2, 3, 5, 6, 7, 9, 10],

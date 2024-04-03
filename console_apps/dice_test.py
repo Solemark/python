@@ -2,7 +2,7 @@ from unittest import TestCase
 from dice import roll
 
 
-class test_dice_roll(TestCase):
+class TestDiceRoll(TestCase):
     def test_d20(self) -> None:
         expect = roll(20)
         result = range(1, 21)

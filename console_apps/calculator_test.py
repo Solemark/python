@@ -2,7 +2,7 @@ from unittest import TestCase
 from calculator import add, subtract, multiply, divide
 
 
-class test_calculator(TestCase):
+class TestCalculator(TestCase):
     def getData(self) -> list[list[int]]:
         return [
             [5, 5],

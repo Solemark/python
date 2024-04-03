@@ -3,7 +3,7 @@ from math import pi
 from circles import get_area, get_circ
 
 
-class test_circle(TestCase):
+class TestCircle(TestCase):
     def get_area_data(self) -> list[list[int | float]]:
         return [
             [pi, 1],

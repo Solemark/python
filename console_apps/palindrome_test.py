@@ -2,7 +2,7 @@ from unittest import TestCase
 from palindrome import palindrome_fp, palindrome
 
 
-class test_check_palindrome(TestCase):
+class TestCheckPalindrome(TestCase):
     def test_is_palindrome_fp(self) -> None:
         self.assertEqual(True, palindrome_fp("DAD"))
         self.assertEqual(False, palindrome_fp("Dad"))

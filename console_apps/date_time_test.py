@@ -3,7 +3,7 @@ from date_time import datetime
 from date_time import get_current_time, format_date
 
 
-class test_date_time(TestCase):
+class TestDateTime(TestCase):
     def test_current_time(self) -> None:
         CURRENT_TIME = datetime.now()
         self.assertEqual(

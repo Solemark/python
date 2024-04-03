@@ -2,7 +2,7 @@ from unittest import TestCase
 from reverse_array import reverse_same_array, reverse_array
 
 
-class test_reverse_array(TestCase):
+class TestReverseArray(TestCase):
     input: list[int]
 
     def setUp(self):

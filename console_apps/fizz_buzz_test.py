@@ -2,7 +2,7 @@ from unittest import TestCase
 from fizz_buzz import fizz_buzz
 
 
-class test_fizz_buzz(TestCase):
+class TestFizzBuzz(TestCase):
     def test_fizz_buzz_to_twenty(self) -> None:
         result = fizz_buzz(3, 5, 20)
         expect = [

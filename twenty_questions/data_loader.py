@@ -5,16 +5,27 @@ from question import Question, FType, QType
 def load_characters() -> list[Character]:
     return [
         Character(
-            "Timmy",
+            "Kratos",
             "male",
-            "blonde",
             "brown",
+            "green",
+            "white",
+            "tall",
+            "shredded",
+            "none",
+            "black",
+        ),
+        Character(
+            "Homura",
+            "female",
+            "black",
+            "purple",
             "white",
             "short",
             "thin",
-            "red",
-            "blue",
-        )
+            "white",
+            "black",
+        ),
     ]
 
 
@@ -46,11 +57,13 @@ def load_questions() -> list[list[Question]]:
         [
             Question(FType.IS, "thin", QType.WEIGHT),
             Question(FType.IS, "fat", QType.WEIGHT),
+            Question(FType.IS, "shredded", QType.WEIGHT),
         ],
         [
             Question(FType.WEAR, "red shirts", QType.SHIRT),
             Question(FType.WEAR, "green shirts", QType.SHIRT),
             Question(FType.WEAR, "blue shirts", QType.SHIRT),
+            Question(FType.WEAR, "no shirt", QType.SHIRT),
         ],
         [
             Question(FType.WEAR, "red pants", QType.PANTS),

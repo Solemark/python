@@ -12,17 +12,19 @@ def __roll(q: list[Question]) -> Question:
 
 
 def main() -> None:
-    characters: list[Character] = load_characters()
-    questions: list[list[Question]] = load_questions()
-    asked: list[str] = []
-    for Q in questions:
-        q: Question = __roll(Q)
-        asked = [*asked, q.__str__()]
-        for i, C in enumerate(characters):
-            characters[i].search_trait(q.get_type(), q.get_value())
-    for C in characters:
-        print(f"{C.get_name()}: {C.get_weighting()}")
-    print(f"questions asked: {asked}")
+    CL: list[Character] = load_characters()
+    QL: list[list[Question]] = load_questions()
+    QA: list[str] = []
+    c: Character = CL[0]
+    for QS in QL:
+        Q: Question = __roll(QS)
+        QA = [*QA, Q.__str__()]
+        for i, C in enumerate(CL):
+            CL[i].search_trait(Q.get_type(), Q.get_value())
+    for C in CL:
+        c = C if C.get_weighting() > c.get_weighting() else c
+    print(f"{c.get_name()}: {c.get_weighting()}")
+    print(f"questions asked: {QA}")
 
 
 if __name__ == "__main__":

@@ -36,5 +36,4 @@ class Character(Traits):
 
     def search_trait(self, trait: str, value: str) -> None:
         if self.__getattribute__(trait) == value:
-            print(f"T: {trait} | V: {value}")
-            self.__weighting += 1
+            self.__weighting = self.__weighting + 1

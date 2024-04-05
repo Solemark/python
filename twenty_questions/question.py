@@ -2,6 +2,7 @@ from enum import Enum, auto
 
 
 class QType(Enum):
+    GENDER = "gender"
     HAIR = "hair"
     EYES = "eyes"
     SKIN = "skin"

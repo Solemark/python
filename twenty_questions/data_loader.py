@@ -6,6 +6,7 @@ def load_characters() -> list[Character]:
     return [
         Character(
             "Timmy",
+            "male",
             "blonde",
             "brown",
             "white",
@@ -19,6 +20,10 @@ def load_characters() -> list[Character]:
 
 def load_questions() -> list[list[Question]]:
     return [
+        [
+            Question(FType.IS, "male", QType.GENDER),
+            Question(FType.IS, "female", QType.GENDER),
+        ],
         [
             Question(FType.HAVE, "blonde hair", QType.HAIR),
             Question(FType.HAVE, "brown hair", QType.HAIR),

@@ -3,6 +3,7 @@ from dataclasses import dataclass
 
 @dataclass(init=True)
 class Traits:
+    gender: str
     hair: str
     eyes: str
     skin: str
@@ -16,6 +17,7 @@ class Character(Traits):
     def __init__(
         self,
         name: str,
+        gender: str,
         hair: str,
         eyes: str,
         skin: str,
@@ -24,7 +26,7 @@ class Character(Traits):
         shirt: str,
         pants: str,
     ) -> None:
-        super().__init__(hair, eyes, skin, height, weight, shirt, pants)
+        super().__init__(gender, hair, eyes, skin, height, weight, shirt, pants)
         self.__name: str = name
         self.__weighting: int = 0
 

@@ -26,7 +26,7 @@ class Question:
     def get_type(self) -> str:
         return self.__type.value
 
-    def question_prefix(self) -> str:
+    def __question_prefix(self) -> str:
         match self.__form:
             case FType.HAVE:
                 return "does your character have"
@@ -40,4 +40,4 @@ class Question:
         return val[0] if len(val) > 1 else self.__question
 
     def __str__(self) -> str:
-        return f"{self.question_prefix()} {self.__question}"
+        return f"{self.__question_prefix()} {self.__question}"

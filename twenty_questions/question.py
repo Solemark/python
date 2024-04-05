@@ -1,7 +1,24 @@
+from enum import Enum
+
+
+class QType(Enum):
+    HAIR = "hair"
+    EYES = "eyes"
+    SKIN = "skin"
+    HEIGHT = "height"
+    WEIGHT = "weight"
+    SHIRT = "shirt"
+    PANTS = "pants"
+
+
 class Question:
-    def __init__(self, form: int, question: str) -> None:
+    def __init__(self, form: int, question: str, type: QType) -> None:
         self.__form: int = form
         self.__question: str = question
+        self.__type: QType = type
+
+    def get_type(self) -> str:
+        return self.__type
 
     def question_prefix(self) -> str:
         match self.__form:

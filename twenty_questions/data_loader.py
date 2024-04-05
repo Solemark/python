@@ -23,6 +23,7 @@ def load_questions() -> list[list[Question]]:
         [
             Question(FType.IS, "male", QType.GENDER),
             Question(FType.IS, "female", QType.GENDER),
+            Question(FType.IS, "non-binary", QType.GENDER),
         ],
         [
             Question(FType.HAVE, "blonde hair", QType.HAIR),

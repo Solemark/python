@@ -32,11 +32,6 @@ def load_characters() -> list[Character]:
 def load_questions() -> list[list[Question]]:
     return [
         [
-            Question(FType.IS, "male", QType.GENDER),
-            Question(FType.IS, "female", QType.GENDER),
-            Question(FType.IS, "non-binary", QType.GENDER),
-        ],
-        [
             Question(FType.HAVE, "blonde hair", QType.HAIR),
             Question(FType.HAVE, "brown hair", QType.HAIR),
             Question(FType.HAVE, "black hair", QType.HAIR),
@@ -52,12 +47,19 @@ def load_questions() -> list[list[Question]]:
         ],
         [
             Question(FType.IS, "short", QType.HEIGHT),
+            Question(FType.IS, "average", QType.HEIGHT),
             Question(FType.IS, "tall", QType.HEIGHT),
         ],
         [
             Question(FType.IS, "thin", QType.WEIGHT),
+            Question(FType.IS, "average", QType.WEIGHT),
             Question(FType.IS, "fat", QType.WEIGHT),
             Question(FType.IS, "shredded", QType.WEIGHT),
+        ],
+        [
+            Question(FType.IS, "male", QType.GENDER),
+            Question(FType.IS, "female", QType.GENDER),
+            Question(FType.IS, "non-binary", QType.GENDER),
         ],
         [
             Question(FType.WEAR, "red shirts", QType.SHIRT),

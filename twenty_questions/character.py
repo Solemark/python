@@ -31,11 +31,14 @@ class Character(Traits):
         self.__weighting: int = 0
 
     def get_name(self) -> str:
+        """Get character name"""
         return self.__name
 
     def get_weighting(self) -> int:
+        """Get character weighting"""
         return self.__weighting
 
     def search_trait(self, trait: str, value: str) -> None:
+        """See if character has attribute and update weighting"""
         if self.__getattribute__(trait) == value:
             self.__weighting = self.__weighting + 1

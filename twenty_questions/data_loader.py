@@ -3,6 +3,7 @@ from question import Question, FType, QType
 
 
 def get_characters() -> list[Character]:
+    """Get the list of potential characters"""
     return [
         Character(
             name="Kratos",
@@ -11,7 +12,7 @@ def get_characters() -> list[Character]:
             hair="brown",
             height="tall",
             pants="black",
-            shirt="none",
+            shirt="no",
             skin="white",
             weight="shredded",
         ),
@@ -30,6 +31,7 @@ def get_characters() -> list[Character]:
 
 
 def get_questions() -> list[list[Question]]:
+    """Get all the potential questions"""
     return [
         [
             Question(FType.HAVE, "blonde hair", QType.HAIR),

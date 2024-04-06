@@ -25,9 +25,11 @@ class Question:
         self.__type: QType = type
 
     def get_type(self) -> str:
+        """Return the string value for question type (QType)"""
         return self.__type.value
 
     def __question_prefix(self) -> str:
+        """Prefix the question based on form type (FType)"""
         match self.__form:
             case FType.HAVE:
                 return "does your character have"
@@ -37,6 +39,7 @@ class Question:
                 return "Does your character wear"
 
     def get_value(self) -> str:
+        """Get the character attribute from the question"""
         val: str = self.__question.split(" ")
         return val[0] if len(val) > 1 else self.__question
 

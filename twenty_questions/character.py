@@ -3,30 +3,30 @@ from dataclasses import dataclass
 
 @dataclass(init=True)
 class Traits:
+    eyes: str
     gender: str
     hair: str
-    eyes: str
-    skin: str
     height: str
-    weight: str
-    shirt: str
     pants: str
+    shirt: str
+    skin: str
+    weight: str
 
 
 class Character(Traits):
     def __init__(
         self,
         name: str,
+        eyes: str,
         gender: str,
         hair: str,
-        eyes: str,
-        skin: str,
         height: str,
-        weight: str,
-        shirt: str,
         pants: str,
+        shirt: str,
+        skin: str,
+        weight: str,
     ) -> None:
-        super().__init__(gender, hair, eyes, skin, height, weight, shirt, pants)
+        super().__init__(eyes, gender, hair, height, pants, shirt, skin, weight)
         self.__name: str = name
         self.__weighting: int = 0
 

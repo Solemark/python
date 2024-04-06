@@ -20,7 +20,7 @@ def __roll(q: list[Qu]) -> Qu:
     return q[i]
 
 
-def __ask(CL: CList, QL: QList, AL: AList) -> tuple[CList, AList]:
+def __ask(CL: CList, QL: QList, AL: AList = []) -> tuple[CList, AList]:
     """Ask questions as save answers & results"""
     for QS in QL:
         Q: Qu = __roll(QS)
@@ -33,8 +33,7 @@ def __ask(CL: CList, QL: QList, AL: AList) -> tuple[CList, AList]:
 def main() -> None:
     """Watch the computer play 20 questions with itself!"""
     CL, QL = get_data()
-    AL: AList = []
-    CL, AL = __ask(CL, QL, AL)
+    CL, AL = __ask(CL, QL)
     char: Ch = __guess(CL, CL[0])
     if char.get_weighting() == 0:
         """No correct questions! Pretend it didnt happen!"""

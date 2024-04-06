@@ -1,13 +1,13 @@
 from character import Character
 from question import Question, FType, QType
-from stub import CLIST, QLIST
+from stub import CList, QList
 
 
-def get_data() -> tuple[CLIST, QLIST]:
+def get_data() -> tuple[CList, QList]:
     return __get_characters(), __get_questions()
 
 
-def __get_characters() -> CLIST:
+def __get_characters() -> CList:
     """Get the list of potential characters"""
     return [
         Character(
@@ -35,7 +35,7 @@ def __get_characters() -> CLIST:
     ]
 
 
-def __get_questions() -> QLIST:
+def __get_questions() -> QList:
     """Get all the potential questions"""
     return [
         [

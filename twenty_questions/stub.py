@@ -4,8 +4,8 @@ from character import Character
 from question import Question
 
 
-CLIST: TypeAlias = list[Character]
-QLIST: TypeAlias = list[list[Question]]
-ALIST: TypeAlias = list[str]
-CH: TypeAlias = Character
-QU: TypeAlias = Question
+CList: TypeAlias = list[Character]
+QList: TypeAlias = list[list[Question]]
+AList: TypeAlias = list[str]
+Ch: TypeAlias = Character
+Qu: TypeAlias = Question

@@ -2,34 +2,34 @@ from character import Character
 from question import Question, FType, QType
 
 
-def load_characters() -> list[Character]:
+def get_characters() -> list[Character]:
     return [
         Character(
             name="Kratos",
+            eyes="green",
             gender="male",
             hair="brown",
-            eyes="green",
-            skin="white",
             height="tall",
-            weight="shredded",
-            shirt="none",
             pants="black",
+            shirt="none",
+            skin="white",
+            weight="shredded",
         ),
         Character(
             name="Homura",
+            eyes="purple",
             gender="female",
             hair="black",
-            eyes="purple",
-            skin="white",
             height="short",
-            weight="thin",
-            shirt="white",
             pants="black",
+            shirt="white",
+            skin="white",
+            weight="thin",
         ),
     ]
 
 
-def load_questions() -> list[list[Question]]:
+def get_questions() -> list[list[Question]]:
     return [
         [
             Question(FType.HAVE, "blonde hair", QType.HAIR),

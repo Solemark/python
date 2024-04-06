@@ -2,7 +2,7 @@ from random import randint
 
 from character import Character
 from question import Question
-from data_loader import load_characters, load_questions
+from data_loader import get_characters, get_questions
 
 
 def __roll(q: list[Question]) -> Question:
@@ -12,8 +12,8 @@ def __roll(q: list[Question]) -> Question:
 
 
 def main() -> None:
-    CLIST: list[Character] = load_characters()
-    QLIST: list[list[Question]] = load_questions()
+    CLIST: list[Character] = get_characters()
+    QLIST: list[list[Question]] = get_questions()
     ALIST: list[str] = []
     char: Character = CLIST[0]
     for QS in QLIST:

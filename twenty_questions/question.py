@@ -20,7 +20,7 @@ class FType(Enum):
 
 class Question:
     def __init__(self, form: FType, question: str, type: QType) -> None:
-        self.__form: int = form
+        self.__form: FType = form
         self.__question: str = question
         self.__type: QType = type
 
@@ -40,7 +40,7 @@ class Question:
 
     def get_value(self) -> str:
         """Get the character attribute from the question"""
-        val: str = self.__question.split(" ")
+        val: list[str] = self.__question.split(" ")
         return val[0] if len(val) > 1 else self.__question
 
     def __str__(self) -> str:

@@ -1,19 +1,10 @@
 from random import randint
-from typing import TypeAlias
 
-from character import Character
-from question import Question
-from data_loader import get_characters, get_questions
-
-"""Types"""
-CLIST: TypeAlias = list[Character]
-QLIST: TypeAlias = list[list[Question]]
-ALIST: TypeAlias = list[str]
-CH: TypeAlias = Character
-QU: TypeAlias = Question
+from data_loader import get_data
+from type_aliases import CLIST, CH, QU, QLIST, ALIST
 
 
-def __guess(CL: CLIST, char: CH, i: int = 0) -> CH | bool:
+def __guess(CL: CLIST, char: CH, i: int = 1) -> CH:
     """perform a guess by finding the character with the highest weighting"""
     if i > len(CL) - 1:
         return char
@@ -40,16 +31,15 @@ def __ask(CL: CLIST, QL: QLIST, AL: ALIST) -> tuple[CLIST, ALIST]:
 
 
 def main() -> None:
-    """Play 20 questions with yourself!"""
-    CL: CLIST = get_characters()
-    QL: QLIST = get_questions()
+    """Watch the computer play 20 questions with itself!"""
+    CL, QL = get_data()
     AL: ALIST = []
     CL, AL = __ask(CL, QL, AL)
-    char: CH | bool = __guess(CL, CL[0])
-    if char is False:
-        print("No yes questions!")
-    else:
-        print(f"{char.get_name()}: {char.get_weighting()}")
+    char: CH = __guess(CL, CL[0])
+    if char.get_weighting() == 0:
+        """No correct questions! Pretend it didnt happen!"""
+        main()
+    print(f"{char.get_name()}: {char.get_weighting()}")
     print(f"questions asked: {AL}")
 
 

@@ -1,6 +1,6 @@
 from character import Character
 from question import Question, FType, QType
-from type_aliases import CLIST, QLIST
+from stub import CLIST, QLIST
 
 
 def get_data() -> tuple[CLIST, QLIST]:

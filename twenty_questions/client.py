@@ -1,7 +1,7 @@
 from random import randint
 
 from data_loader import get_data
-from type_aliases import CLIST, CH, QU, QLIST, ALIST
+from stub import CLIST, CH, QU, QLIST, ALIST
 
 
 def __guess(CL: CLIST, char: CH, i: int = 1) -> CH:

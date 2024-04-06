@@ -22,7 +22,7 @@ def __roll(q: list[Qu]) -> Qu:
 
 # TODO - make __ask into a recursive function using fp
 def __ask(CL: CList, QL: QList, AL: AList = []) -> tuple[CList, AList]:
-    """Ask questions as save answers & results"""
+    """Ask questions and save answers"""
     for QS in QL:
         Q: Qu = __roll(QS)
         AL = [*AL, Q.__str__()]

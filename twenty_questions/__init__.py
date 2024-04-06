@@ -19,7 +19,7 @@ def main() -> None:
     for QS in QLIST:
         Q: Question = __roll(QS)
         ALIST = [*ALIST, Q.__str__()]
-        for i, C in enumerate(CLIST):
+        for i, _ in enumerate(CLIST):
             CLIST[i].search_trait(Q.get_type(), Q.get_value())
     for C in CLIST:
         char = C if C.get_weighting() > char.get_weighting() else char

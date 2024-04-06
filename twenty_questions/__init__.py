@@ -13,13 +13,13 @@ CH: TypeAlias = Character
 QU: TypeAlias = Question
 
 
-def __guess(CL: CLIST) -> CH | bool:
+def __guess(CL: CLIST, char: CH, i: int = 0) -> CH | bool:
     """perform a guess by finding the character with the highest weighting"""
-    char: CH = CL[0]
-    for C in CL:
-        if C.get_weighting() > char.get_weighting():
-            char = C
-    return char if char.get_weighting() > 0 else False
+    if i > len(CL) - 1:
+        return char
+    if CL[i].get_weighting() > char.get_weighting():
+        char = CL[i]
+    return __guess(CL, char, i + 1)
 
 
 def __roll(q: list[QU]) -> QU:
@@ -45,7 +45,7 @@ def main() -> None:
     QL: QLIST = get_questions()
     AL: ALIST = []
     CL, AL = __ask(CL, QL, AL)
-    char: CH | bool = __guess(CL)
+    char: CH | bool = __guess(CL, CL[0])
     if char is False:
         print("No yes questions!")
     else:

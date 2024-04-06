@@ -1,8 +1,13 @@
 from character import Character
 from question import Question, FType, QType
+from type_aliases import CLIST, QLIST
 
 
-def get_characters() -> list[Character]:
+def get_data() -> tuple[CLIST, QLIST]:
+    return __get_characters(), __get_questions()
+
+
+def __get_characters() -> CLIST:
     """Get the list of potential characters"""
     return [
         Character(
@@ -30,7 +35,7 @@ def get_characters() -> list[Character]:
     ]
 
 
-def get_questions() -> list[list[Question]]:
+def __get_questions() -> QLIST:
     """Get all the potential questions"""
     return [
         [
@@ -49,12 +54,12 @@ def get_questions() -> list[list[Question]]:
         ],
         [
             Question(FType.IS, "short", QType.HEIGHT),
-            Question(FType.IS, "average", QType.HEIGHT),
+            Question(FType.IS, "average height", QType.HEIGHT),
             Question(FType.IS, "tall", QType.HEIGHT),
         ],
         [
             Question(FType.IS, "thin", QType.WEIGHT),
-            Question(FType.IS, "average", QType.WEIGHT),
+            Question(FType.IS, "average weight", QType.WEIGHT),
             Question(FType.IS, "fat", QType.WEIGHT),
             Question(FType.IS, "shredded", QType.WEIGHT),
         ],

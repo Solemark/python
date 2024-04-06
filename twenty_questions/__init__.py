@@ -18,7 +18,7 @@ def __guess(CL: CLIST, char: CH, i: int = 0) -> CH | bool:
     if i > len(CL) - 1:
         return char
     if CL[i].get_weighting() > char.get_weighting():
-        char = CL[i]
+        return __guess(CL, CL[i], i + 1)
     return __guess(CL, char, i + 1)
 
 

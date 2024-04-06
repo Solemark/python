@@ -69,5 +69,6 @@ def load_questions() -> list[list[Question]]:
             Question(FType.WEAR, "red pants", QType.PANTS),
             Question(FType.WEAR, "green pants", QType.PANTS),
             Question(FType.WEAR, "blue pants", QType.PANTS),
+            Question(FType.WEAR, "no pants", QType.PANTS),
         ],
     ]

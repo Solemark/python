@@ -20,15 +20,21 @@ def __roll(q: list[Qu]) -> Qu:
     return q[i]
 
 
-# TODO - make __ask into a recursive function using fp
-def __ask(CL: CList, QL: QList, AL: AList = []) -> tuple[CList, AList]:
+def __search_traits(CL: CList, Q: Qu, i: int = 0) -> CList:
+    """Search for Characters with the Trait"""
+    if i > len(CL) - 1:
+        return CL
+    CL[i].search_trait(Q.get_type(), Q.get_value())
+    return __search_traits(CL, Q, i + 1)
+
+
+def __ask(CL: CList, QL: QList, AL: AList = [], i: int = 0) -> tuple[CList, AList]:
     """Ask questions and save answers"""
-    for QS in QL:
-        Q: Qu = __roll(QS)
-        AL = [*AL, Q.__str__()]
-        for i, _ in enumerate(CL):
-            CL[i].search_trait(Q.get_type(), Q.get_value())
-    return CL, AL
+    if i > len(QL) - 1:
+        return CL, AL
+    Q: Qu = __roll(QL[i])
+    CL = __search_traits(CL, Q)
+    return __ask(CL, QL, [*AL, Q.__str__()], i + 1)
 
 
 def main() -> None:

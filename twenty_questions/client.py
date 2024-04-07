@@ -25,19 +25,19 @@ def __ask(CL: CList, QL: QList, AL: AList = [], i: int = 0) -> tuple[CList, ALis
     return __ask(CL, QL, [*AL, Q.__str__()], i + 1)
 
 
+def __roll(q: list[Qu]) -> Qu:
+    """Determine which question in a category to ask"""
+    M: int = len(q) - 1
+    i: int = randint(0, M)
+    return q[i]
+
+
 def __search(CL: CList, Q: Qu, i: int = 0) -> CList:
     """Search for Characters with the Trait"""
     if i > len(CL) - 1:
         return CL
     CL[i].search_trait(Q.get_type(), Q.get_value())
     return __search(CL, Q, i + 1)
-
-
-def __roll(q: list[Qu]) -> Qu:
-    """Determine which question in a category to ask"""
-    M: int = len(q) - 1
-    i: int = randint(0, M)
-    return q[i]
 
 
 def __guess(CL: CList, char: Ch, i: int = 1) -> Ch:

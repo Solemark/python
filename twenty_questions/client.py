@@ -21,16 +21,16 @@ def __ask(CL: CList, QL: QList, AL: AList = [], i: int = 0) -> tuple[CList, ALis
     if i > len(QL) - 1:
         return CL, AL
     Q: Qu = __roll(QL[i])
-    CL = __search_traits(CL, Q)
+    CL = __search(CL, Q)
     return __ask(CL, QL, [*AL, Q.__str__()], i + 1)
 
 
-def __search_traits(CL: CList, Q: Qu, i: int = 0) -> CList:
+def __search(CL: CList, Q: Qu, i: int = 0) -> CList:
     """Search for Characters with the Trait"""
     if i > len(CL) - 1:
         return CL
     CL[i].search_trait(Q.get_type(), Q.get_value())
-    return __search_traits(CL, Q, i + 1)
+    return __search(CL, Q, i + 1)
 
 
 def __roll(q: list[Qu]) -> Qu:

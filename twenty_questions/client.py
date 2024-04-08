@@ -27,9 +27,7 @@ def __ask(CL: CList, QL: QList, AL: AList = [], i: int = 0) -> tuple[CList, ALis
 
 def __roll(q: list[Qu]) -> Qu:
     """Determine which question in a category to ask"""
-    M: int = len(q) - 1
-    i: int = randint(0, M)
-    return q[i]
+    return q[randint(0, len(q) - 1)]
 
 
 def __search(CL: CList, Q: Qu, i: int = 0) -> CList:

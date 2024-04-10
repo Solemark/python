@@ -32,16 +32,11 @@ def __place_food(board: list[list[str]], snake_head: Position) -> Position:
 
 def __boundary_check(i: int, board: list[list[str]], axis: Axis) -> int:
     """Check that the Position attribute is within the playable area"""
-    if axis == Axis.x:
-        if i <= 0:
-            return 1
-        if i >= len(board[0]) - 1:
-            return len(board[0]) - 2
-    else:
-        if i <= 0:
-            return 1
-        if i >= len(board) - 1:
-            return len(board) - 2
+    M: int = len(board[0]) - 1 if axis == Axis.x else len(board) - 1
+    if i <= 0:
+        return 1
+    if i >= M:
+        return M - 1
     return i
 
 

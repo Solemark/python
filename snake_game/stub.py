@@ -2,6 +2,11 @@ from dataclasses import dataclass
 from enum import Enum, auto
 
 
+class Axis(Enum):
+    x = auto()
+    y = auto()
+
+
 class Direction(Enum):
     Up = auto()
     Left = auto()

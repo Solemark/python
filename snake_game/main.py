@@ -1,7 +1,7 @@
 from random import randint
 
 from snake import Snake
-from stub import Fields, Position
+from stub import Axis, Fields, Position
 
 
 def play(board: list[list[str]]) -> None:
@@ -23,19 +23,25 @@ def play(board: list[list[str]]) -> None:
 
 def __place_food(board: list[list[str]], snake_head: Position) -> Position:
     """Create a new Position for food"""
-    x: int = __boundary_check(randint(0, len(board[0]) - 1), board)
-    y: int = __boundary_check(randint(0, len(board) - 1), board)
+    x: int = __boundary_check(randint(0, len(board[0]) - 1), board, Axis.x)
+    y: int = __boundary_check(randint(0, len(board) - 1), board, Axis.y)
     if x == snake_head.x and y == snake_head.y:
         return __place_food(board, snake_head)
     return Position(x, y)
 
 
-def __boundary_check(i: int, board: list[list[str]]) -> int:
+def __boundary_check(i: int, board: list[list[str]], axis: Axis) -> int:
     """Check that the Position attribute is within the playable area"""
-    if i <= 0:
-        return 1
-    if i >= len(board[0]) - 1:
-        return len(board[0]) - 2
+    if axis == Axis.x:
+        if i <= 0:
+            return 1
+        if i >= len(board[0]) - 1:
+            return len(board[0]) - 2
+    else:
+        if i <= 0:
+            return 1
+        if i >= len(board) - 1:
+            return len(board) - 2
     return i
 
 

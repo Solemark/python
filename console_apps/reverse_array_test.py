@@ -3,13 +3,12 @@ from reverse_array import reverse_same_array, reverse_array
 
 
 class TestReverseArray(TestCase):
-    input: list[int]
-
-    def setUp(self):
-        self.input = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-
-    def test_reverse_same_array(self) -> None:
-        self.assertEqual(list(reversed(self.input)), reverse_same_array(self.input))
+    def setUp(self) -> None:
+        self.data: list[int] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        self.expect: list[int] = list(reversed(self.data))
 
     def test_reverse_array(self) -> None:
-        self.assertEqual(list(reversed(self.input)), reverse_array(self.input))
+        self.assertEqual(self.expect, reverse_array(self.data))
+
+    def test_reverse_same_array(self) -> None:
+        self.assertEqual(self.expect, reverse_same_array(self.data))

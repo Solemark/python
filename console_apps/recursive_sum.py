@@ -1,12 +1,10 @@
-def number(input: int, total: int) -> int:
-    if input <= 0:
-        return total
-    total += input
-    return number(input - 1, total)
+def number(m: int | float, i: int | float = 0, t: int | float = 0) -> int | float:
+    if i > m:
+        return t
+    return number(m, i + 1, t + i)
 
 
-def array(input: list[int | float], current: int, total: int | float) -> int | float:
-    if current <= 0:
-        return total
-    total += input[current - 1]
-    return array(input, current - 1, total)
+def array(a: list[int | float], i: int = 0, t: int | float = 0) -> int | float:
+    if i > a.__len__() - 1:
+        return t
+    return array(a, i + 1, t + a[i])

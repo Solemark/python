@@ -4,15 +4,13 @@ from circles import get_area, get_circ
 
 
 class TestCircle(TestCase):
-    def get_area_data(self) -> list[list[int | float]]:
-        return [
+    def setUp(self) -> None:
+        self.areas: list[list[float | int]] = [
             [pi, 1],
             [0, 0],
             [(pi * 2.1**2), 2.1],
         ]
-
-    def get_circ_data(self) -> list[list[int | float]]:
-        return [
+        self.circs: list[list[float | int]] = [
             [6.2831853, 1],
             [0, 0],
             [(pi * 2.1 * 2), 2.1],
@@ -20,11 +18,9 @@ class TestCircle(TestCase):
 
     # Test areas when radius >= 0
     def test_area(self) -> None:
-        items = self.get_area_data()
-        for item in items:
+        for item in self.areas:
             self.assertAlmostEqual(item[0], get_area(item[1]))
 
     def test_circ(self) -> None:
-        items = self.get_circ_data()
-        for item in items:
+        for item in self.circs:
             self.assertAlmostEqual(item[0], get_circ(item[1]))

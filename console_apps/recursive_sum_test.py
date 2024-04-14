@@ -3,12 +3,10 @@ from recursive_sum import number, array
 
 
 class TestRecursiveSum(TestCase):
-    def test_sum_number(self) -> None:
-        input: int = 10
-        expect: int = 55
-        self.assertEqual(expect, number(input, 0))
+    def setUp(self) -> None:
+        self.expect: int = 55
+        self.data: list[int | float] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
-    def test_sum_array(self) -> None:
-        input: list[int | float] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-        expect: int = 55
-        self.assertEqual(expect, array(input, len(input), 0))
+    def test_recursive_sum(self) -> None:
+        self.assertEqual(self.expect, number(self.data[-1]))
+        self.assertEqual(self.expect, array(self.data))

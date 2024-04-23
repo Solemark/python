@@ -2,6 +2,7 @@ from socket import socket
 
 
 def main() -> None:
+    # TODO - Connect to a server coordinator which talks to book and movie server
     s: socket = socket()
     s.connect(("localhost", 8001))
     s.send("test book,1,1000".encode())

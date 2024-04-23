@@ -50,13 +50,5 @@ class Item:
         """Get the item result"""
         return self.__total_bill
 
-    def serialize(self) -> dict[str, str | float]:
-        """Serialize the item to be sent across the network"""
-        return {
-            "name": self.__name,
-            "quantity": self.__quantity,
-            "price": self.__price,
-        }
-
     def __str__(self) -> str:
         return f"{self.__name},{self.__quantity},{self.__price}"

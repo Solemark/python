@@ -27,8 +27,10 @@ class BookServer:
         while True:
             sock, addr = self.SERVER.accept()
             print(f"Incoming message from {addr}")
+
             b: list[str] = sock.recv(1024).decode().split(",")
             self.__save_books(Book(b[0], float(b[1]), float(b[2])))
+
             sock.send(f"Book successfully saved: {self.books[-1].__str__()}".encode())
             sock.close()
 
@@ -38,7 +40,7 @@ class BookServer:
         books: list[Book] = []
         for d in f:
             b: list[str] = d.split(",")
-            books = [*books, Book(b[0], float(b[1]), float(b[2]))]
+            books.append(Book(b[0], float(b[1]), float(b[2])))
         return books
 
     def __save_books(self, b: Book) -> None:

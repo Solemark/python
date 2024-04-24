@@ -1,5 +1,7 @@
 class Item:
-    def __init__(self, name: str, quantity: float, price: float, tax: float) -> None:
+    def __init__(
+        self, name: str, quantity: float, price: float, tax: float = 0
+    ) -> None:
         self.__name = name
         self.__quantity = quantity
         self.__price = price

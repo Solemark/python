@@ -1,5 +1,4 @@
 from socket import socket
-from item import Item
 
 
 class Client:
@@ -30,11 +29,7 @@ class Client:
 
     def get_details(self, t: str) -> str:
         print(f"Enter {t} details:")
-        return Item(
-            input(f"Enter {t} name: "),
-            float(input(f"Enter {t} quantity: ")),
-            float(input(f"Enter {t} price: ")),
-        ).__str__()
+        return f"{input(f'Enter {t} name: ')},{input(f'Enter {t} quantity: ')},{input(f'Enter {t} price: ')}"
 
     def send_message(self, msg: str) -> None:
         s: socket = socket()

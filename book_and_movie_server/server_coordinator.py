@@ -20,7 +20,7 @@ class ServerCoordinator:
             sock, addr = self.SERVER.accept()
             print(f"Incoming message from {addr}")
 
-            m: list[str] = sock.recv(1024).decode().split("|")  # B|name|10.00|1000
+            m: list[str] = sock.recv(1024).decode().split(",")
             r: bool = self.__send_message(m)
 
             sock.send("Success!".encode() if r else "Failed!".encode())

@@ -1,7 +1,6 @@
 from socket import socket
 from typing import Any
 from os import linesep
-
 from book import Book
 
 
@@ -18,7 +17,7 @@ class BookServer:
         self.SERVER.bind((self.ADDRESS, self.PORT))
         self.SERVER.listen(self.CONNECTIONS)
 
-        print(f"listening on {self.ADDRESS}:{self.PORT}")
+        print(f"Listening on {self.ADDRESS}:{self.PORT}")
 
         self.__run_server()
 

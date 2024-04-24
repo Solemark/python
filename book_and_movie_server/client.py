@@ -7,51 +7,42 @@ class Client:
         while True:
             print("\n".join(self.client_prompt()))
             res: str = input("Enter your option: ")
-
+            msg: str = ""
             match res:
                 case "1":
-                    self.send_book()
+                    msg = f"B,{self.get_details('book')}"
                 case "2":
-                    self.send_movie()
+                    msg = f"M,{self.get_details('movie')}"
                 case _:
                     exit(0)
-
-    def send_book(self) -> None:
-        s: socket = socket()
-        s.connect(("localhost", 8001))
-        item: Item = self.get_details("book")
-        s.send(item.__str__().encode())
-        m = s.recv(1024).decode()
-        print(m)
-        s.close()
-
-    def send_movie(self) -> None:
-        s: socket = socket()
-        s.connect(("localhost", 8002))
-        item: Item = self.get_details("movie")
-        s.send(item.__str__().encode())
-        m = s.recv(1024).decode()
-        print(m)
-        s.close()
-
-    def get_details(self, t: str) -> Item:
-        print(f"Enter {t} details:")
-        return Item(
-            input(f"Enter {t} name: "),
-            float(input(f"Enter {t} quantity: ")),
-            float(input(f"Enter {t} price: ")),
-        )
+            self.send_message(msg)
 
     def client_prompt(self) -> list[str]:
         return [
             "**************************************",
             "Place your order by selecting a number",
             "**************************************",
-            "1. Purchase Book",
-            "2. Purchase Movie",
-            "3. Exit",
+            "1. Purchase book",
+            "2. Purchase movie",
+            "Press any other key to exit",
             "**************************************",
         ]
+
+    def get_details(self, t: str) -> str:
+        print(f"Enter {t} details:")
+        return Item(
+            input(f"Enter {t} name: "),
+            float(input(f"Enter {t} quantity: ")),
+            float(input(f"Enter {t} price: ")),
+        ).__str__()
+
+    def send_message(self, msg: str) -> None:
+        s: socket = socket()
+        s.connect(("localhost", 8000))
+        s.send(msg.encode())
+        m = s.recv(1024).decode()
+        print(m)
+        s.close()
 
 
 if __name__ == "__main__":

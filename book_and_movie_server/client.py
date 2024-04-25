@@ -35,8 +35,8 @@ class Client:
         s: socket = socket()
         s.connect(("localhost", 8000))
         s.send(msg.encode())
-        m = s.recv(1024).decode()
-        print(m)
+        res = s.recv(1024).decode()
+        print(res)
         s.close()
 
 

@@ -21,13 +21,13 @@ class ServerCoordinator:
             print(f"Incoming message from {addr}")
 
             m: list[str] = sock.recv(1024).decode().split(",")
-            r: bool = self.__send_message(m)
+            r: str = self.__send_message(m)
 
-            sock.send("Success!".encode() if r else "Failed!".encode())
+            sock.send(r.encode())
             sock.close()
 
-    def __send_message(self, m: list[str]) -> bool:
-        response: bool = False
+    def __send_message(self, m: list[str]) -> str:
+        response: str = ""
         match m[0]:
             case "B":
                 response = self.__send_book(m)
@@ -35,21 +35,21 @@ class ServerCoordinator:
                 response = self.__send_movie(m)
         return response
 
-    def __send_book(self, m: list[str]) -> bool:
+    def __send_book(self, m: list[str]) -> str:
         s: socket = socket()
         s.connect(("localhost", 8001))
         s.send(f"{m[1]},{m[2]},{m[3]}".encode())
         res = s.recv(1024).decode()
         s.close()
-        return True if res == "true" else False
+        return res
 
-    def __send_movie(self, m: list[str]) -> bool:
+    def __send_movie(self, m: list[str]) -> str:
         s: socket = socket()
         s.connect(("localhost", 8002))
         s.send(f"{m[1]},{m[2]},{m[3]}".encode())
         res = s.recv(1024).decode()
         s.close()
-        return True if res == "true" else False
+        return res
 
 
 if __name__ == "__main__":

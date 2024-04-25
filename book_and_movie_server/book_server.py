@@ -28,9 +28,13 @@ class BookServer:
             print(f"Incoming message from {addr}")
 
             b: list[str] = sock.recv(1024).decode().split(",")
-            self.__save_books(Book(b[0], float(b[1]), float(b[2])))
+            res: bool = self.__save_books(Book(b[0], float(b[1]), float(b[2])))
 
-            sock.send("true".encode())
+            sock.send(
+                "Book saved successfully!".encode()
+                if res
+                else "Book failed to save!".encode()
+            )
             sock.close()
 
     def __get_books(self) -> list[Book]:
@@ -42,12 +46,16 @@ class BookServer:
             books.append(Book(b[0], float(b[1]), float(b[2])))
         return books
 
-    def __save_books(self, b: Book) -> None:
+    def __save_books(self, b: Book) -> bool:
         """Save the Book list"""
-        self.books.append(b)
-        f: Any = open("data/books.csv", "w")
-        for book in self.books:
-            f.write(book.__str__() + linesep)
+        try:
+            self.books.append(b)
+            f: Any = open("data/books.csv", "w")
+            for book in self.books:
+                f.write(book.__str__() + linesep)
+            return True
+        except Exception:
+            return False
 
 
 if __name__ == "__main__":

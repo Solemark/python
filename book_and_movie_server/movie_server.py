@@ -28,9 +28,13 @@ class MovieServer:
             print(f"Incoming message from {addr}")
 
             m: list[str] = sock.recv(1024).decode().split(",")
-            self.__save_movies(Movie(m[0], float(m[1]), float(m[2])))
+            res: bool = self.__save_movies(Movie(m[0], float(m[1]), float(m[2])))
 
-            sock.send("true".encode())
+            sock.send(
+                "Book saved successfully!".encode()
+                if res
+                else "Book failed to save!".encode()
+            )
             sock.close()
 
     def __get_movies(self) -> list[Movie]:
@@ -42,12 +46,16 @@ class MovieServer:
             movies.append(Movie(m[0], float(m[1]), float(m[2])))
         return movies
 
-    def __save_movies(self, m: Movie) -> None:
+    def __save_movies(self, m: Movie) -> bool:
         """Save the Movie list"""
-        self.movies.append(m)
-        f: Any = open("data/movies.csv", "w")
-        for movie in self.movies:
-            f.write(movie.__str__() + linesep)
+        try:
+            self.movies.append(m)
+            f: Any = open("data/movies.csv", "w")
+            for movie in self.movies:
+                f.write(movie.__str__() + linesep)
+            return True
+        except Exception:
+            return False
 
 
 if __name__ == "__main__":

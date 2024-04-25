@@ -30,7 +30,7 @@ class BookServer:
             b: list[str] = sock.recv(1024).decode().split(",")
             self.__save_books(Book(b[0], float(b[1]), float(b[2])))
 
-            sock.send(f"Book successfully saved: {self.books[-1].__str__()}".encode())
+            sock.send("true".encode())
             sock.close()
 
     def __get_books(self) -> list[Book]:

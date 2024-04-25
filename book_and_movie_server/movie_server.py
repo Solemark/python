@@ -30,7 +30,7 @@ class MovieServer:
             m: list[str] = sock.recv(1024).decode().split(",")
             self.__save_movies(Movie(m[0], float(m[1]), float(m[2])))
 
-            sock.send(f"Movie successfully saved: {self.movies[-1].__str__()}".encode())
+            sock.send("true".encode())
             sock.close()
 
     def __get_movies(self) -> list[Movie]:

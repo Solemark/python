@@ -8,23 +8,23 @@ class BookServer:
     def __init__(
         self, address: str = "localhost", port: int = 8001, connections: int = 5
     ) -> None:
-        self.ADDRESS: str = address
-        self.PORT: int = port
-        self.CONNECTIONS: int = connections
-        self.books: list[Book] = self.__get_books()
+        self.__ADDRESS: str = address
+        self.__PORT: int = port
+        self.__CONNECTIONS: int = connections
+        self.__books: list[Book] = self.__get_books()
 
-        self.SERVER = socket()
-        self.SERVER.bind((self.ADDRESS, self.PORT))
-        self.SERVER.listen(self.CONNECTIONS)
+        self.__SERVER = socket()
+        self.__SERVER.bind((self.__ADDRESS, self.__PORT))
+        self.__SERVER.listen(self.__CONNECTIONS)
 
-        print(f"Listening on {self.ADDRESS}:{self.PORT}")
+        print(f"Listening on {self.__ADDRESS}:{self.__PORT}")
 
         self.__run_server()
 
     def __run_server(self) -> None:
         """Run the Book Server"""
         while True:
-            sock, addr = self.SERVER.accept()
+            sock, addr = self.__SERVER.accept()
             print(f"Incoming message from {addr}")
 
             b: list[str] = sock.recv(1024).decode().split(",")
@@ -49,9 +49,9 @@ class BookServer:
     def __save_books(self, b: Book) -> bool:
         """Save the Book list"""
         try:
-            self.books.append(b)
+            self.__books.append(b)
             f: Any = open("data/books.csv", "w")
-            for book in self.books:
+            for book in self.__books:
                 f.write(book.__str__() + linesep)
             return True
         except Exception:

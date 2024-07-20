@@ -17,6 +17,7 @@ class Client:
             self.send_message(msg)
 
     def client_prompt(self) -> list[str]:
+        """get the client prompt"""
         return [
             "**************************************",
             "Place your order by selecting a number",
@@ -28,10 +29,12 @@ class Client:
         ]
 
     def get_details(self, t: str) -> str:
+        """Get the (type) details and compose for serialization"""
         print(f"Enter {t} details:")
         return f"{input(f'Enter {t} name: ')},{input(f'Enter {t} quantity: ')},{input(f'Enter {t} price: ')}"
 
     def send_message(self, msg: str) -> None:
+        """Encode then send the message. Await a response"""
         s: socket = socket()
         s.connect(("localhost", 8000))
         s.send(msg.encode())

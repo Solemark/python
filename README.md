@@ -1,4 +1,4 @@
-# Learning Python!
+# Python Meta
 
 run tests with:
 

@@ -24,16 +24,16 @@ class BookingGUI:
         master = Tk()
         master.title("NQ-RE Services Calculator")
 
-        self.__booking_id = StringVar()
-        self.__booking_date = StringVar()
-        self.__num_weeks = StringVar()
-        self.__property_owner_name = StringVar()
-        self.__contact_number = StringVar()
+        self.__b_id = StringVar()
+        self.__date = StringVar()
+        self.__weeks = StringVar()
+        self.__owner = StringVar()
+        self.__number = StringVar()
         self.__address = StringVar()
         self.__rooms = StringVar()
-        self.__garden_area = StringVar()
-        self.__security_alarm_check = BooleanVar()
-        self.__pool_maintenance = BooleanVar()
+        self.__area = StringVar()
+        self.__alarm = BooleanVar()
+        self.__pool = BooleanVar()
         self.__booking_list = []
         self.__rooms_cost = StringVar()
         self.__garden_area_cost = StringVar()
@@ -44,21 +44,21 @@ class BookingGUI:
             row=0, columnspan=2
         )
         Label(master, text="BookingId: ").grid(row=1, column=0)
-        Entry(master, textvariable=self.__booking_id).grid(row=1, column=1)
+        Entry(master, textvariable=self.__b_id).grid(row=1, column=1)
         Label(master, text="Booking Date: ").grid(row=2, column=0)
-        Entry(master, textvariable=self.__booking_date).grid(row=2, column=1)
+        Entry(master, textvariable=self.__date).grid(row=2, column=1)
         Label(master, text="Weeks: ").grid(row=3, column=0)
-        Entry(master, textvariable=self.__num_weeks).grid(row=3, column=1)
+        Entry(master, textvariable=self.__weeks).grid(row=3, column=1)
         Label(master, text="Owner Name: ").grid(row=4, column=0)
-        Entry(master, textvariable=self.__property_owner_name).grid(row=4, column=1)
+        Entry(master, textvariable=self.__owner).grid(row=4, column=1)
         Label(master, text="Contact Number: ").grid(row=5, column=0)
-        Entry(master, textvariable=self.__contact_number).grid(row=5, column=1)
+        Entry(master, textvariable=self.__number).grid(row=5, column=1)
         Label(master, text="Address: ").grid(row=6, column=0)
         Entry(master, textvariable=self.__address).grid(row=6, column=1)
         Label(master, text="Rooms: ").grid(row=7, column=0)
         Entry(master, textvariable=self.__rooms).grid(row=7, column=1)
         Label(master, text="Garden Area: ").grid(row=8, column=0)
-        Entry(master, textvariable=self.__garden_area).grid(row=8, column=1)
+        Entry(master, textvariable=self.__area).grid(row=8, column=1)
         Button(master, text="Submit", command=self.__submit).grid(
             row=9, column=0, columnspan=1
         )
@@ -74,14 +74,14 @@ class BookingGUI:
         Checkbutton(
             master,
             text="Security Check",
-            variable=self.__security_alarm_check,
+            variable=self.__alarm,
             onvalue=True,
             offvalue=False,
         ).grid(row=11, column=0, columnspan=1)
         Checkbutton(
             master,
             text="Pool Maintenance",
-            variable=self.__pool_maintenance,
+            variable=self.__pool,
             onvalue=True,
             offvalue=False,
         ).grid(row=11, column=1, columnspan=1)
@@ -101,54 +101,46 @@ class BookingGUI:
         master.mainloop()
 
     def __submit(self) -> None:
-        """
-        Adds the current booking to the list
-        """
+        """Adds the current booking to the list"""
         self.__booking_list.append(
             Luxury(
-                self.__booking_id.get(),
-                self.__booking_date.get(),
-                int(self.__num_weeks.get()),
-                self.__property_owner_name.get(),
-                self.__contact_number.get(),
-                self.__address.get(),
-                int(self.__rooms.get()),
-                int(self.__garden_area.get()),
-                security_alarm_check=self.__security_alarm_check.get(),
-                pool_maintenance=self.__pool_maintenance.get(),
+                b_id=self.__b_id.get(),
+                date=self.__date.get(),
+                weeks=int(self.__weeks.get()),
+                owner=self.__owner.get(),
+                number=self.__number.get(),
+                address=self.__address.get(),
+                rooms=int(self.__rooms.get()),
+                area=float(self.__area.get()),
+                alarm=self.__alarm.get(),
+                pool=self.__pool.get(),
             )
         )
         self.__calculation(self.__booking_list[-1])
         self.__clear()
 
     def __clear(self) -> None:
-        """
-        clears the GUI input fields
-        """
-        self.__booking_id.set("")
-        self.__booking_date.set("")
-        self.__num_weeks.set("")
-        self.__property_owner_name.set("")
-        self.__contact_number.set("")
+        """clears the GUI input fields"""
+        self.__b_id.set("")
+        self.__date.set("")
+        self.__weeks.set("")
+        self.__owner.set("")
+        self.__number.set("")
         self.__address.set("")
         self.__rooms.set("")
-        self.__garden_area.set("")
-        self.__security_alarm_check.set(False)
-        self.__pool_maintenance.set(False)
+        self.__area.set("")
+        self.__alarm.set(False)
+        self.__pool.set(False)
         self.__display_all.set("")
 
     def __display(self) -> None:
-        """
-        display's the GUI details
-        """
+        """display's the GUI details"""
         self.__display_all.set(
             "\n".join(booking.__str__() for booking in self.__booking_list)
         )
 
     def __exit(self) -> None:
-        """
-        exit the GUI
-        """
+        """exit the GUI"""
         exit(0)
 
     def __calculation(self, booking: Luxury) -> None:
@@ -158,8 +150,8 @@ class BookingGUI:
         @returns None
         """
         room_cost: float = booking.get_rooms_cost()
-        garden_area_cost: float = booking.get_garden_area_cost()
-        total: float = (room_cost + garden_area_cost) * booking.get_num_weeks()
+        garden_area_cost: float = booking.get_area_cost()
+        total: float = (room_cost + garden_area_cost) * booking.get_weeks()
         self.__rooms_cost.set(str(room_cost))
         self.__garden_area_cost.set(str(garden_area_cost))
         self.__total_price.set(str(total + booking.get_luxury_cost()))

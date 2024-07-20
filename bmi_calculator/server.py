@@ -12,13 +12,13 @@ def get_bmi_page() -> Response:
     return send_file("static/index.html")
 
 
-@app.get("/script/<script>")
+@app.get("/scripts/<script>")
 def get_script(script: str) -> Response:
     """Return the js file"""
     return send_file(f"static/{escape(script)}.js")
 
 
 @app.get("/data/<height>/<weight>")
-def get_bmi(height: float, weight: float) -> dict[str, str]:
+def get_bmi(height: str, weight: str) -> dict[str, str]:
     """Get the BMI rating"""
-    return {"rating": BMI(height, weight).get_rating()}
+    return {"rating": BMI(float(height), float(weight)).get_rating()}

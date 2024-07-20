@@ -23,3 +23,7 @@ def reverse_array(arr: list[Any]) -> list[Any]:
         output.append(arr[i])
         i -= 1
     return output
+
+
+def reverse_array_new(arr: list[Any]) -> list[Any]:
+    return list(reversed(arr))

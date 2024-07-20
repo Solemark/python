@@ -25,19 +25,19 @@ class BMI:
         """get the bmi rating of the user"""
         bmi: float = self.__weight / ((self.__height / 100) ** 2)
         rating: str = ""
-        if bmi < 16.00:
+        if 0.0 <= bmi <= 16.00:
             rating = "Bulimic"
-        if bmi < 16.99:
+        elif 16.01 <= bmi <= 16.99:
             rating = "Lean"
-        if bmi < 18.49:
+        elif 17.00 <= bmi <= 18.49:
             rating = "Under"
-        if bmi < 24.99:
+        elif 18.50 <= bmi <= 24.99:
             rating = "Normal"
-        if bmi < 29.99:
+        elif 25.00 <= bmi <= 29.99:
             rating = "Over"
-        if bmi < 34.99:
+        elif 30.00 <= bmi <= 34.99:
             rating = "Obese"
-        if bmi >= 35:
+        else:
             rating = "Morbid"
         return rating
 

@@ -1,19 +1,18 @@
-from dataclasses import dataclass
 from math import isclose
 
 
-@dataclass(init=True)
 class Number:
-    number: int
-    start: int
-    end: int
-    row: int
+    def __init__(self, number: int, start: int, end: int, row: int) -> None:
+        self.number: int = number
+        self.start: int = start
+        self.end: int = end
+        self.row: int = row
 
 
-@dataclass(init=True)
 class Symbol:
-    pos: int
-    row: int
+    def __init__(self, pos: int, row: int) -> None:
+        self.pos: int = pos
+        self.row: int = row
 
 
 class Day3:

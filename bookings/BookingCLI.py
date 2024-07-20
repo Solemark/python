@@ -5,6 +5,7 @@ from Booking import Luxury
 class Type(Enum):
     INT = auto()
     BOOL = auto()
+    FLOAT = auto()
     STRING = auto()
 
 
@@ -47,46 +48,48 @@ class BookingCLI:
     def __new(self) -> Luxury:
         """Creates a new Luxury object"""
         return Luxury(
-            self.__validate("Enter Booking ID: "),
-            self.__validate("Enter Booking Date: "),
-            self.__validate("Enter Number of Weeks: ", Type.INT),
-            self.__validate("Enter Property Owner Name: "),
-            self.__validate("Enter Contact Number: "),
-            self.__validate("Enter Booking Address: "),
-            self.__validate("Enter Number of Rooms: ", Type.INT),
-            self.__validate("Enter Garden Area: ", Type.INT),
-            self.__validate("Perform Alarm Check? (Y/N): ", Type.BOOL),
-            self.__validate("Perform Pool Upkeep? (Y/N): ", Type.BOOL),
+            str(self.__validate("Enter Booking ID: ")),
+            str(self.__validate("Enter Booking Date: ")),
+            int(self.__validate("Enter Number of Weeks: ", Type.INT)),
+            str(self.__validate("Enter Property Owner Name: ")),
+            str(self.__validate("Enter Contact Number: ")),
+            str(self.__validate("Enter Booking Address: ")),
+            int(self.__validate("Enter Number of Rooms: ", Type.INT)),
+            float(self.__validate("Enter Garden Area: ", Type.FLOAT)),
+            bool(self.__validate("Perform Alarm Check? (Y/N): ", Type.BOOL)),
+            bool(self.__validate("Perform Pool Upkeep? (Y/N): ", Type.BOOL)),
         )
 
-    def __validate(self, MSG: str, T: Type = Type.STRING) -> str | int | bool:
+    def __validate(self, MSG: str, T: Type = Type.STRING) -> str | int | bool | float:
         """Validate user input for new Luxury Objects"""
-        out: str | int | bool
-        flag: bool = False
-        while flag is False:
+        out: int | bool | float | str
+        while True:
             out = input(MSG)
             match T:
                 case Type.INT:
                     if out is not None and out != "":
                         try:
-                            out = int(out)
-                            flag = True
+                            return int(out)
                         except ValueError:
                             continue
                 case Type.BOOL:
                     if out is not None and out.upper() in ["Y", "N"]:
-                        out = True if out.upper() == "Y" else False
-                        flag = True
+                        return True if out.upper() == "Y" else False
+                case Type.FLOAT:
+                    if out is not None and out != "":
+                        try:
+                            return float(out)
+                        except ValueError:
+                            continue
                 case Type.STRING:
                     if out is not None and out != "":
-                        flag = True
-        return out
+                        return out
 
     def __search(self) -> Luxury | str:
         """Finds the Luxury object from the bookings list"""
         ID: str = input("Enter Booking ID to search: ")
         for booking in self.bookings:
-            if ID == booking.get_booking_id():
+            if ID == booking.get_id():
                 return booking
         return "Invalid Booking ID!"
 
@@ -98,14 +101,14 @@ class BookingCLI:
         """Updates an existing Luxury in the bookings list"""
         ID: str = input("Enter Booking ID to update: ")
         for i, booking in enumerate(self.bookings):
-            if ID == booking.get_booking_id():
+            if ID == booking.get_id():
                 self.bookings[i] = self.__new()
         return self.bookings
 
     def __remove(self) -> list[Luxury]:
         """Remove a Luxury from the bookings list"""
         ID: str = input("Enter Booking ID to remove: ")
-        return [booking for booking in self.bookings if booking.get_booking_id() != ID]
+        return [booking for booking in self.bookings if booking.get_id() != ID]
 
 
 if __name__ == "__main__":

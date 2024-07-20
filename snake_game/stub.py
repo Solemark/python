@@ -1,4 +1,3 @@
-from dataclasses import dataclass
 from enum import Enum, auto
 
 
@@ -21,7 +20,10 @@ class Fields(Enum):
     Food = "@"
 
 
-@dataclass(init=True)
 class Position:
-    x: int
-    y: int
+    def __init__(self, x: int, y: int) -> None:
+        self.x: int = x
+        self.y: int = y
+
+    def __str__(self) -> str:
+        return f"[{self.x},{self.y}]"

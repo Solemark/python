@@ -1,16 +1,23 @@
-from dataclasses import dataclass
-
-
-@dataclass(init=True)
 class Traits:
-    eyes: str
-    gender: str
-    hair: str
-    height: str
-    pants: str
-    shirt: str
-    skin: str
-    weight: str
+    def __init__(
+        self,
+        eyes: str,
+        gender: str,
+        hair: str,
+        height: str,
+        pants: str,
+        shirt: str,
+        skin: str,
+        weight: str,
+    ) -> None:
+        self.eyes: str = eyes
+        self.gender: str = gender
+        self.hair: str = hair
+        self.height: str = height
+        self.pants: str = pants
+        self.shirt: str = shirt
+        self.skin: str = skin
+        self.weight: str = weight
 
 
 class Character(Traits):

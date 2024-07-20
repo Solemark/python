@@ -1,147 +1,165 @@
 class Booking:
     def __init__(
         self,
-        booking_id: str = "",
-        booking_date: str = "",
-        num_weeks: int = 0,
-        property_owner_name: str = "",
-        contact_number: str = "",
-        address: str = "",
-        rooms: int = 0,
-        garden_area: float = 0.0,
+        b_id: str,
+        date: str,
+        weeks: int,
+        owner: str,
+        number: str,
+        address: str,
+        rooms: int,
+        area: float,
     ) -> None:
-        self.__booking_id = booking_id
-        self.__booking_date = booking_date
-        self.__num_weeks = num_weeks
-        self.__property_owner_name = property_owner_name
-        self.__contact_number = contact_number
+        self.__id = b_id
+        self.__date = date
+        self.__weeks = weeks
+        self.__owner = owner
+        self.__number = number
         self.__address = address
         self.__rooms = rooms
-        self.__garden_area = garden_area
+        self.__area = area
 
-    def set_booking_id(self, booking_id: str) -> None:
-        self.__booking_id = booking_id
+    def set_id(self, b_id: str) -> None:
+        """Update the Booking ID"""
+        self.__id = b_id
 
-    def get_booking_id(self) -> str:
-        return self.__booking_id
+    def get_id(self) -> str:
+        """Get the Booking ID"""
+        return self.__id
 
-    def set_booking_date(self, booking_date: str) -> None:
-        self.__booking_date = booking_date
+    def set_date(self, date: str) -> None:
+        """Update the Booking Date"""
+        self.__date = date
 
-    def get_booking_date(self) -> str:
-        return self.__booking_date
+    def get_date(self) -> str:
+        """Get the Booking Date"""
+        return self.__date
 
-    def set_num_weeks(self, num_weeks: int) -> None:
-        self.__num_weeks = num_weeks
+    def set_weeks(self, weeks: int) -> None:
+        """Update the Number of Weeks"""
+        self.__weeks = weeks
 
-    def get_num_weeks(self) -> int:
-        return self.__num_weeks
+    def get_weeks(self) -> int:
+        """Get the Number of Weeks"""
+        return self.__weeks
 
-    def set_property_owner_name(self, property_owner_name: str) -> None:
-        self.__property_owner_name = property_owner_name
+    def set_owner(self, owner: str) -> None:
+        """Update the Property Owner"""
+        self.__owner = owner
 
-    def get_property_owner_name(self) -> str:
-        return self.__property_owner_name
+    def get_owner(self) -> str:
+        """Get the Property Owner"""
+        return self.__owner
 
-    def set_contact_number(self, contact_number: str) -> None:
-        self.__contact_number = contact_number
+    def set_number(self, number: str) -> None:
+        """Update the Contact Number"""
+        self.__number = number
 
-    def get_contact_number(self) -> str:
-        return self.__contact_number
+    def get_number(self) -> str:
+        """Get the Contact Number"""
+        return self.__number
 
     def set_address(self, address: str) -> None:
+        """Update the Booking Address"""
         self.__address = address
 
     def get_address(self) -> str:
+        """Get the Booking Address"""
         return self.__address
 
     def set_rooms(self, rooms: int) -> None:
+        """Update the Booking Rooms"""
         self.__rooms = rooms
 
     def get_rooms(self) -> int:
+        """Get the Booking Rooms"""
         return self.__rooms
 
     def get_rooms_cost(self) -> float:
+        """Get the Rooms Cost"""
         return self.__rooms * 5
 
-    def set_garden_area(self, garden_area: float) -> None:
-        self.__garden_area = garden_area
+    def set_area(self, area: float) -> None:
+        """Update the Garden Area"""
+        self.__area = area
 
-    def get_garden_area(self) -> float:
-        return self.__garden_area
+    def get_area(self) -> float:
+        """Get the Garden Area"""
+        return self.__area
 
-    def get_garden_area_cost(self) -> float:
-        return self.__garden_area * 2
+    def get_area_cost(self) -> float:
+        """Get the Garden Area Cost"""
+        return self.__area * 2
 
     def __str__(self) -> str:
         return (
-            f"id: {self.__booking_id}, "
-            f"date: {self.__booking_date}, "
-            f"weeks: {self.__num_weeks}, "
-            f"owner: {self.__property_owner_name}, "
-            f"number: {self.__contact_number}, "
+            f"id: {self.__id}, "
+            f"date: {self.__date}, "
+            f"weeks: {self.__weeks}, "
+            f"owner: {self.__owner}, "
+            f"number: {self.__number}, "
             f"address: {self.__address}, "
             f"rooms: {self.__rooms}, "
             f"room cost: {self.get_rooms_cost()}, "
-            f"garden area: {self.__garden_area}, "
-            f"garden area cost: {self.get_garden_area_cost()}"
+            f"garden area: {self.__area}, "
+            f"garden area cost: {self.get_area_cost()}"
         )
 
 
 class Luxury(Booking):
     def __init__(
         self,
-        booking_id="",
-        booking_date="",
-        num_weeks=0,
-        property_owner_name="",
-        contact_number="",
-        address="",
-        rooms=0,
-        garden_area=0.0,
-        security_alarm_check=False,
-        pool_maintenance=False,
+        b_id: str,
+        date: str,
+        weeks: int,
+        owner: str,
+        number: str,
+        address: str,
+        rooms: int,
+        area: float,
+        alarm: bool,
+        pool: bool,
     ) -> None:
         super().__init__(
-            booking_id,
-            booking_date,
-            num_weeks,
-            property_owner_name,
-            contact_number,
+            b_id,
+            date,
+            weeks,
+            owner,
+            number,
             address,
             rooms,
-            garden_area,
+            area,
         )
-        self.__security_alarm_check = security_alarm_check
-        self.__pool_maintenance = pool_maintenance
+        self.__alarm = alarm
+        self.__pool = pool
 
-    def set_security_alarm_check(self, security_alarm_check: bool) -> None:
-        self.__security_alarm_check = security_alarm_check
+    def set_alarm(self, alarm: bool) -> None:
+        """Update the Security Alarm Check"""
+        self.__alarm = alarm
 
-    def get_security_alarm_check(self) -> bool:
-        return self.__security_alarm_check
+    def get_alarm(self) -> bool:
+        """Get the Security Alarm Check"""
+        return self.__alarm
 
-    def set_pool_maintenance(self, pool_maintenance: bool) -> None:
-        self.__pool_maintenance = pool_maintenance
+    def set_pool(self, pool: bool) -> None:
+        """Update the Pool Maintenance Check"""
+        self.__pool = pool
 
-    def get_pool_maintenance(self) -> bool:
-        return self.__pool_maintenance
+    def get_pool(self) -> bool:
+        """Get the Pool Maintenance Check"""
+        return self.__pool
 
     def get_luxury_cost(self) -> float:
+        """Get the cost of luxuries"""
         output: float = 0.0
-
-        if self.__pool_maintenance is True:
-            output += 50.0
-
-        if self.__security_alarm_check is True:
-            output += 50
-
+        output += 50.0 if self.__pool else 0.0
+        output += 50.0 if self.__alarm else 0.0
         return output
 
     def __str__(self) -> str:
         return (
             f"{super().__str__()}, "
-            f"security alarm check: {self.__security_alarm_check}, "
-            f"pool maintenance check: {self.__pool_maintenance}, "
+            f"security alarm check: {self.__alarm}, "
+            f"pool maintenance check: {self.__pool}, "
             f"total cost: {self.get_luxury_cost()}"
         )

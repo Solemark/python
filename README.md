@@ -36,4 +36,6 @@ run debug mode with:
 
 	flask --app <filename> run --debug
 
-filename does not need to include .py
+type stubgen with:
+
+    stubgen .

@@ -1,11 +1,12 @@
-from unittest import TestCase
+from pytest import fixture
 from fizz_buzz import fizz_buzz
 
 
-class TestFizzBuzz(TestCase):
-    def test_fizz_buzz_to_twenty(self) -> None:
-        result = fizz_buzz(3, 5, 20)
-        expect = [
+@fixture
+def data() -> tuple[list[int], list[str]]:
+    return (
+        [3, 5, 20],
+        [
             "1",
             "2",
             "fizz",
@@ -26,5 +27,10 @@ class TestFizzBuzz(TestCase):
             "fizz",
             "19",
             "buzz",
-        ]
-        self.assertEqual(expect, result)
+        ],
+    )
+
+
+def test_fizz_buzz_to_twenty(data: tuple[list[int], list[str]]) -> None:
+    inp, exp = data
+    assert exp == fizz_buzz(inp[0], inp[1], inp[2])

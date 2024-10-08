@@ -1,30 +1,36 @@
-from unittest import TestCase
+from pytest import fixture
 from date_time import datetime
 from date_time import get_current_time, format_date
 
 
-class TestDateTime(TestCase):
-    def test_current_time(self) -> None:
-        CURRENT_TIME = datetime.now()
-        self.assertEqual(
-            get_current_time(),
-            (
-                f"The date is: {CURRENT_TIME.strftime('%A')} "
-                f"the {format_date(CURRENT_TIME.day)} "
-                f"of { CURRENT_TIME.strftime('%B')} "
-                f"{CURRENT_TIME.year}"
-            ),
-        )
+@fixture
+def dates() -> list[tuple[int, str]]:
+    return [
+        (1, "1st"),
+        (2, "2nd"),
+        (3, "3rd"),
+        (4, "4th"),
+        (10, "10th"),
+        (11, "11th"),
+        (12, "12th"),
+        (13, "13th"),
+        (14, "14th"),
+        (30, "30th"),
+        (31, "31st"),
+    ]
 
-    def test_format_date(self) -> None:
-        self.assertEqual(format_date(1), "1st")
-        self.assertEqual(format_date(2), "2nd")
-        self.assertEqual(format_date(3), "3rd")
-        self.assertEqual(format_date(4), "4th")
-        self.assertEqual(format_date(10), "10th")
-        self.assertEqual(format_date(11), "11th")
-        self.assertEqual(format_date(12), "12th")
-        self.assertEqual(format_date(13), "13th")
-        self.assertEqual(format_date(14), "14th")
-        self.assertEqual(format_date(30), "30th")
-        self.assertEqual(format_date(31), "31st")
+
+def test_current_time() -> None:
+    now: datetime = datetime.now()
+    expect = (
+        f"The date is: {now.strftime('%A')} "
+        f"the {format_date(now.day)} "
+        f"of { now.strftime('%B')} "
+        f"{now.year}"
+    )
+    assert expect == get_current_time()
+
+
+def test_format_date(dates: list[tuple[int, str]]) -> None:
+    for i in dates:
+        assert format_date(i[0]) == i[1]

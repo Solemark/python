@@ -1,35 +1,39 @@
-from unittest import TestCase
-from calculator import add, subtract, multiply, divide
+from pytest import fixture
+from calculator import add, sub, mul, div
 
 
-class TestCalculator(TestCase):
-    def setUp(self) -> None:
-        self.data = [
-            [5, 5],
-            [5, -5],
-            [-5, -5],
-        ]
+@fixture
+def data() -> list[list[int]]:
+    return [
+        [5, 5],
+        [5, -5],
+        [-5, -5],
+    ]
 
-    def test_addition(self) -> None:
-        for item in self.data:
-            a: int = item[0]
-            b: int = item[1]
-            self.assertAlmostEqual((a + b), add(a, b))
 
-    def test_subtraction(self) -> None:
-        for item in self.data:
-            a: int = item[0]
-            b: int = item[1]
-            self.assertAlmostEqual((a - b), subtract(a, b))
+def test_add(data) -> None:
+    for i in data:
+        a: int = i[0]
+        b: int = i[1]
+        assert add(a, b) == a + b
 
-    def test_multiplication(self) -> None:
-        for item in self.data:
-            a: int = item[0]
-            b: int = item[1]
-            self.assertAlmostEqual((a * b), multiply(a, b))
 
-    def test_division(self) -> None:
-        for item in self.data:
-            a: int = item[0]
-            b: int = item[1]
-            self.assertAlmostEqual((a / b), divide(a, b))
+def test_sub(data) -> None:
+    for i in data:
+        a: int = i[0]
+        b: int = i[1]
+        assert sub(a, b) == a - b
+
+
+def test_mul(data) -> None:
+    for i in data:
+        a: int = i[0]
+        b: int = i[1]
+        assert mul(a, b) == a * b
+
+
+def test_div(data) -> None:
+    for i in data:
+        a: int = i[0]
+        b: int = i[1]
+        assert div(a, b) == a / b

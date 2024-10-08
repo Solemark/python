@@ -1,15 +1,17 @@
-from unittest import TestCase
-
+from pytest import fixture
 from tail_recursion import recursive_sum, recursive_sum_tail
 
 
-class TestTailRecursion(TestCase):
-    def setUp(self) -> None:
-        self.expect: int = 55
-        self.data: list[int] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+@fixture
+def data() -> tuple[int, list[int]]:
+    return 55, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
-    def test_recursive_sum(self) -> None:
-        self.assertEqual(self.expect, recursive_sum(self.data))
 
-    def test_recursive_sum_tail(self) -> None:
-        self.assertEqual(self.expect, recursive_sum_tail(self.data))
+def test_recursive_sum(data: tuple[int, list[int]]) -> None:
+    exp, inp = data
+    assert exp == recursive_sum(inp)
+
+
+def test_recursive_sum_tail(data: tuple[int, list[int]]) -> None:
+    exp, inp = data
+    assert exp == recursive_sum_tail(inp)

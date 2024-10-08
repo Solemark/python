@@ -1,12 +1,13 @@
-from unittest import TestCase
+from pytest import fixture
 from multiplication_tables import calculate
 
 
-class TestMultiplicationTables(TestCase):
-    def setUp(self) -> None:
-        self.data: list[list[int | str]] = [
+@fixture
+def data() -> list[tuple[int, list[str]]]:
+    return [
+        (
+            1,
             [
-                1,
                 "1 x 0 = 0",
                 "1 x 1 = 1",
                 "1 x 2 = 2",
@@ -21,8 +22,10 @@ class TestMultiplicationTables(TestCase):
                 "1 x 11 = 11",
                 "1 x 12 = 12",
             ],
+        ),
+        (
+            5,
             [
-                5,
                 "5 x 0 = 0",
                 "5 x 1 = 5",
                 "5 x 2 = 10",
@@ -37,8 +40,10 @@ class TestMultiplicationTables(TestCase):
                 "5 x 11 = 55",
                 "5 x 12 = 60",
             ],
+        ),
+        (
+            9,
             [
-                9,
                 "9 x 0 = 0",
                 "9 x 1 = 9",
                 "9 x 2 = 18",
@@ -53,8 +58,10 @@ class TestMultiplicationTables(TestCase):
                 "9 x 11 = 99",
                 "9 x 12 = 108",
             ],
+        ),
+        (
+            10,
             [
-                10,
                 "10 x 0 = 0",
                 "10 x 1 = 10",
                 "10 x 2 = 20",
@@ -69,8 +76,10 @@ class TestMultiplicationTables(TestCase):
                 "10 x 11 = 110",
                 "10 x 12 = 120",
             ],
+        ),
+        (
+            12,
             [
-                12,
                 "12 x 0 = 0",
                 "12 x 1 = 12",
                 "12 x 2 = 24",
@@ -85,8 +94,11 @@ class TestMultiplicationTables(TestCase):
                 "12 x 11 = 132",
                 "12 x 12 = 144",
             ],
-        ]
+        ),
+    ]
 
-    def test_multiplication_tables(self) -> None:
-        for items in self.data:
-            self.assertEqual(items[1:], calculate(int(items[0]), 12))
+
+def test_multiplication_tables(data) -> None:
+    for item in data:
+        inp, exp = item
+        assert exp == calculate(inp, 12)

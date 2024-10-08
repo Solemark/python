@@ -1,11 +1,12 @@
-from unittest import TestCase
+from pytest import fixture
 from gacha_roll import roll
 
 
-class TestGachaRoll(TestCase):
-    def setUp(self) -> None:
-        self.substr: list[str] = ["FGO", "AK", "GI", "Unknown"]
+@fixture
+def data() -> list[str]:
+    return ["FGO", "AK", "GI", "Unknown"]
 
-    def test_gacha_roll(self) -> None:
-        for substr in self.substr:
-            self.assertIn(substr, roll(substr))
+
+def test_gacha_roll(data: list[str]) -> None:
+    for i in data:
+        assert i in roll(i)

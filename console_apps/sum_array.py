@@ -1,7 +1,7 @@
 from functools import reduce
 
 
-def sum(input: list[int | float]) -> int | float:
+def compute(input: list[int | float]) -> int | float:
     return reduce(__add, input)
 
 

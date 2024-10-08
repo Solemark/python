@@ -1,14 +1,13 @@
-from unittest import TestCase
+from pytest import fixture
 from reverse_array import reverse_same_array, reverse_array
 
 
-class TestReverseArray(TestCase):
-    def setUp(self) -> None:
-        self.data: list[int] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-        self.expect: list[int] = list(reversed(self.data))
+@fixture
+def data() -> tuple[list[int], list[int]]:
+    return ([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [10, 9, 8, 7, 6, 5, 4, 3, 2, 1])
 
-    def test_reverse_array(self) -> None:
-        self.assertEqual(self.expect, reverse_array(self.data))
 
-    def test_reverse_same_array(self) -> None:
-        self.assertEqual(self.expect, reverse_same_array(self.data))
+def test_reverse_array(data: tuple[list[int], list[int]]) -> None:
+    inp, exp = data
+    assert exp == reverse_array(inp)
+    assert exp == reverse_same_array(inp)

@@ -2,13 +2,13 @@ def add(a: int | float, b: int | float) -> int | float:
     return a + b
 
 
-def subtract(a: int | float, b: int | float) -> int | float:
+def sub(a: int | float, b: int | float) -> int | float:
     return a - b
 
 
-def multiply(a: int | float, b: int | float) -> int | float:
+def mul(a: int | float, b: int | float) -> int | float:
     return a * b
 
 
-def divide(a: int | float, b: int | float) -> int | float:
+def div(a: int | float, b: int | float) -> int | float:
     return a / b

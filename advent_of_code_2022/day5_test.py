@@ -1,11 +1,16 @@
-import unittest
-
+from pytest import fixture
 from day5 import day5
 
 
-class advent_of_code_2022_tests(unittest.TestCase):
-    def test_day5(self) -> None:
-        data: list[list[str]] = [["Z", "N"], ["M", "C", "D"], ["P"]]
-        MOVES: list[list[int]] = [[1, 2, 1], [3, 1, 3], [2, 2, 1], [1, 1, 2]]
-        EXPECT: list[list[str]] = [["C"], ["M"], ["P", "D", "N", "Z"]]
-        self.assertEqual(EXPECT, day5(data, MOVES))
+@fixture
+def data() -> tuple[list[list[str]], list[list[int]], list[list[str]]]:
+    return (
+        [["Z", "N"], ["M", "C", "D"], ["P"]],
+        [[1, 2, 1], [3, 1, 3], [2, 2, 1], [1, 1, 2]],
+        [["C"], ["M"], ["P", "D", "N", "Z"]],
+    )
+
+
+def test_day5(data: tuple[list[list[str]], list[list[int]], list[list[str]]]) -> None:
+    inp, mov, exp = data
+    assert exp == day5(inp, mov)

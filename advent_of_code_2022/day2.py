@@ -15,20 +15,21 @@ points: dict = {
     "Win": 6,
 }
 results: dict = {
-    "Rock-Paper": points["Win"],
-    "Paper-Scissors": points["Win"],
-    "Scissors-Rock": points["Win"],
-    "Paper-Rock": points["Loss"],
-    "Scissors-Paper": points["Loss"],
-    "Rock-Scissors": points["Loss"],
-    "Rock-Rock": points["Draw"],
-    "Paper-Paper": points["Draw"],
-    "Scissors-Scissors": points["Draw"],
+    "RockPaper": points["Win"],
+    "RockRock": points["Draw"],
+    "RockScissors": points["Loss"],
+    "PaperScissors": points["Win"],
+    "PaperPaper": points["Draw"],
+    "PaperRock": points["Loss"],
+    "ScissorsRock": points["Win"],
+    "ScissorsPaper": points["Loss"],
+    "ScissorsScissors": points["Draw"],
 }
 
 
-def day2(data: list[list[str]], i: int = 0, total: int = 0) -> int:
-    new = points[rps[data[i][1]]] + results[f"{rps[data[i][0]]}-{rps[data[i][1]]}"]
-    if len(data) - 1 <= i:
-        return total + new
-    return day2(data, i + 1, total + new)
+def day2(data: list[list[str]]) -> int:
+    total: int = 0
+    for item in data:
+        a, b, c = points[rps[item[1]]], rps[item[0]], rps[item[1]]
+        total += a + results[f"{b}{c}"]
+    return total

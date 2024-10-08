@@ -1,13 +1,10 @@
-def day1(data: list[str], totals: list[int] = [], total: int = 0, i: int = 0) -> str:
-    if len(data) - 1 <= i:
-        return f"Elf {__getMax([*totals, total])} has the most calories"
-    if data[i] == "":
-        totals = [*totals, total]
-        total = 0
-    else:
-        total = total + int(data[i])
-    return day1(data, totals, total, i + 1)
-
-
-def __getMax(totals: list[int]) -> int:
-    return max(i for i, _ in enumerate(totals))
+def day1(data: list[str]) -> str:
+    total: int = 0
+    totals: list[int] = []
+    for item in [*data, ""]:
+        if item == "":
+            totals.append(total)
+            total = 0
+        else:
+            total += int(item)
+    return f"Elf {max(i for i, _ in enumerate(totals))} has the most calories"
